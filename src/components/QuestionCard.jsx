@@ -1,8 +1,10 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { toJpeg } from 'html-to-image';
+import ShareSheet from './ShareSheet';
 
 const QuestionCard = ({ question, lang, onNext }) => {
     const cardRef = useRef(null);
+    const [showShareSheet, setShowShareSheet] = useState(false);
 
     const getGenreTheme = (genre) => {
         // Map genres to specific colors and assets based on provided designs
@@ -21,18 +23,55 @@ const QuestionCard = ({ question, lang, onNext }) => {
 
     const theme = getGenreTheme(question.genre);
 
-    const handleShare = async (e) => {
+    const handleShareClick = (e) => {
         e.stopPropagation();
+        setShowShareSheet(true);
+    };
+
+    const generateImage = async () => {
         if (cardRef.current) {
-            try {
-                const dataUrl = await toJpeg(cardRef.current, { quality: 0.95, backgroundColor: theme.bg });
+            return await toJpeg(cardRef.current, { quality: 0.95, backgroundColor: theme.bg });
+        }
+        return null;
+    };
+
+    const handleShareOption = async (platform) => {
+        try {
+            const dataUrl = await generateImage();
+            if (!dataUrl) return;
+
+            // Simple download for all for now, or use navigator.share if file support exists
+            // Since we are likely in a browser environment that might not support files in navigator.share perfectly everywhere,
+            // we will bias towards download or basic share.
+
+            const blob = await (await fetch(dataUrl)).blob();
+            const file = new File([blob], 'hewar-card.jpeg', { type: 'image/jpeg' });
+
+            if (platform === 'download') {
                 const link = document.createElement('a');
                 link.download = 'hewar-card.jpeg';
                 link.href = dataUrl;
                 link.click();
-            } catch (err) {
-                console.error('oops, something went wrong!', err);
+            } else {
+                // Try native share for other platforms
+                if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+                    await navigator.share({
+                        files: [file],
+                        title: 'Hewar Question',
+                        text: 'Check out this question from Hewar!'
+                    });
+                } else {
+                    // Fallback to download if native share fails
+                    const link = document.createElement('a');
+                    link.download = 'hewar-card.jpeg';
+                    link.href = dataUrl;
+                    link.click();
+                    alert("Image downloaded! You can now share it manually.");
+                }
             }
+            setShowShareSheet(false);
+        } catch (err) {
+            console.error('Sharing failed', err);
         }
     };
 
@@ -79,15 +118,22 @@ const QuestionCard = ({ question, lang, onNext }) => {
                         <span style={{ fontSize: '0.8rem', opacity: 0.8 }}>Hewar.com</span>
                     </div>
                 </div>
+
+                {/* Share Button (Floating inside card but positioned absolute) */}
+                <button
+                    onClick={handleShareClick}
+                    className="btn-3d share-btn"
+                >
+                    <img src="assets/icons/share.svg" alt="" style={{ width: '20px', height: '20px' }} />
+                    <span>Share</span>
+                </button>
             </div>
 
-            {/* Share Button (Floating) */}
-            <button
-                onClick={handleShare}
-                className="btn-3d share-btn"
-            >
-                <img src="assets/icons/share.svg" alt="Share" style={{ width: '24px', height: '24px' }} />
-            </button>
+            <ShareSheet
+                isOpen={showShareSheet}
+                onClose={() => setShowShareSheet(false)}
+                onShare={handleShareOption}
+            />
         </>
     );
 };
