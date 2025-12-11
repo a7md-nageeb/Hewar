@@ -31,7 +31,7 @@ const SelectionScreen = ({ lang, onStart, onBack }) => {
         setTimeout(() => {
             setIsLoading(false);
             onStart(selectedCategory, genreId);
-        }, 2000); // 2 seconds friction
+        }, 800); // Reduced friction
     };
 
     const renderHeader = () => {
