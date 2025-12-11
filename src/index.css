@@ -1,0 +1,671 @@
+:root {
+    /* --- Basic --- */
+    --white: #FFFFFF;
+    --white-2: #F8F8FF;
+    --black: #141414;
+
+    /* --- Charcoal --- */
+    --charcoal-50: #F5F5F7;
+    --charcoal-100: #E5E5E8;
+    --charcoal-200: #C2C2C6;
+    --charcoal-300: #A0A0A2;
+    --charcoal-400: #7D7D80;
+    --charcoal-500: #5C5C5E;
+    --charcoal-600: #404041;
+    --charcoal-700: #292929;
+    --charcoal-800: #1A1A1A;
+    --charcoal-900: #141414;
+
+    /* --- Teal --- */
+    --teal-50: #EFFFFD;
+    --teal-100: #CDFFFA;
+    --teal-200: #ABFFF7;
+    --teal-300: #88FFF4;
+    --teal-400: #66FFF1;
+    --teal-500: #51EBDD;
+    --teal-600: #3BC9BC;
+    /* Primary? */
+    --teal-700: #28A79B;
+    --teal-800: #19857B;
+    --teal-900: #0D635B;
+
+    /* --- Green --- */
+    --green-50: #EEFFF3;
+    --green-100: #C8FFD9;
+    --green-200: #A2FFBF;
+    --green-300: #7CFFA4;
+    --green-400: #56FF8A;
+    --green-500: #41E975;
+    --green-600: #2CC75C;
+    --green-700: #1BA546;
+    --green-800: #0E8332;
+    --green-900: #046121;
+
+    /* --- Lime --- */
+    --lime-50: #F9FFF0;
+    --lime-100: #EBFFD0;
+    --lime-200: #DEFFAF;
+    --lime-300: #D0FF8E;
+    --lime-400: #BCF66A;
+    --lime-500: #9ED452;
+    --lime-600: #81B23D;
+    --lime-700: #66902B;
+    --lime-800: #4C6E1C;
+    --lime-900: #334C10;
+
+    /* --- Orange --- */
+    --orange-50: #FFF5ED;
+    --orange-100: #FFE0C5;
+    --orange-200: #FFCA9D;
+    --orange-300: #FFB575;
+    --orange-400: #FE9F4D;
+    --orange-500: #DC8438;
+    --orange-600: #BA6B27;
+    --orange-700: #985419;
+    --orange-800: #763E0E;
+    --orange-900: #542A06;
+
+    /* --- Yellow --- */
+    --yellow-50: #FFFBED;
+    --yellow-100: #FFF3C4;
+    --yellow-200: #FFEC9B;
+    --yellow-300: #FFE472;
+    --yellow-400: #FFDC49;
+    --yellow-500: #DDBD35;
+    --yellow-600: #BB9E24;
+    --yellow-700: #998016;
+    --yellow-800: #77620B;
+    --yellow-900: #554504;
+
+    /* --- Coral --- */
+    --coral-50: #FFEFEF;
+    --coral-100: #FFCCCC;
+    --coral-200: #FFAAAA;
+    --coral-300: #FF8787;
+    --coral-400: #FF6464;
+    --coral-500: #DD4E4E;
+    --coral-600: #992929;
+    --coral-700: #992929;
+    --coral-800: #771B1B;
+    --coral-900: #551010;
+
+    /* --- Cyan --- */
+    --cyan-50: #F0FBFF;
+    --cyan-100: #C4F0FF;
+    --cyan-200: #98E4FF;
+    --cyan-300: #69D3F8;
+    --cyan-400: #55B8DB;
+    --cyan-500: #449EBE;
+    --cyan-600: #3484A1;
+    --cyan-700: #266B83;
+    --cyan-800: #1A5366;
+    --cyan-900: #103A49;
+
+    /* --- Ocean --- */
+    --ocean-50: #F0F6FF;
+    --ocean-100: #C4DBFF;
+    --ocean-200: #98C0FF;
+    --ocean-300: #669DF2;
+    --ocean-400: #5286D5;
+    --ocean-500: #4170B8;
+    --ocean-600: #315B9B;
+    --ocean-700: #24477D;
+    --ocean-800: #183560;
+    --ocean-900: #0F2343;
+
+    /* --- Lilac --- */
+    --lilac-50: #F5F3FF;
+    --lilac-100: #D6CFFF;
+    --lilac-200: #B2A6F7;
+    --lilac-300: #8F7FEE;
+    --lilac-400: #796AD1;
+    --lilac-500: #6356B4;
+    --lilac-600: #504497;
+    --lilac-700: #3D3379;
+    --lilac-800: #2D255C;
+    --lilac-900: #1D173F;
+
+    /* --- Pink --- */
+    --pink-50: #FFF2FD;
+    --pink-100: #FFCEFA;
+    --pink-200: #FAA6F1;
+    --pink-300: #F17DE5;
+    --pink-400: #D468C9;
+    --pink-500: #B754AD;
+    --pink-600: #9A4391;
+    --pink-700: #7C3275;
+    --pink-800: #5F2459;
+    --pink-900: #42173E;
+
+    /* --- App Theme Tokens --- */
+    --color-bg-primary: var(--white);
+    --color-bg-secondary: var(--charcoal-50);
+    --color-text-primary: var(--charcoal-900);
+    --color-text-secondary: var(--charcoal-500);
+
+    --font-en: 'Nunito', sans-serif;
+    --font-ar: 'Cairo', sans-serif;
+
+    /* 3D Button Utility Variables */
+    --shadow-sm: 0 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 0 rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 6px 0 rgba(0, 0, 0, 0.05);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: var(--font-en);
+    background-color: var(--white);
+    color: var(--color-text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+[dir="rtl"] {
+    font-family: var(--font-ar);
+}
+
+#root {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    font-family: inherit;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+/* Scrollbar hiding */
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* Common Classes we might use in React */
+.btn-3d {
+    background: var(--white);
+    border: 1px solid var(--charcoal-100);
+    border-radius: 16px;
+    box-shadow: 0 4px 0 var(--charcoal-100);
+    transition: all 0.1s ease;
+}
+
+.btn-3d:active {
+    transform: translateY(4px);
+    box-shadow: 0 0px 0 var(--charcoal-100);
+}
+
+.btn-tertiary {
+    background: var(--charcoal-50);
+    border: none;
+    border-radius: 16px;
+    box-shadow: none;
+    color: var(--charcoal-900);
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    cursor: pointer;
+}
+
+.btn-tertiary:active {
+    background: var(--charcoal-100);
+    transform: scale(0.96);
+}
+
+/* --- App Container --- */
+.app-container {
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    background: var(--color-bg-primary);
+    color: var(--color-text-primary);
+}
+
+/* --- Language Selector --- */
+.language-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.logo-container {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.app-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--charcoal-900);
+    text-align: center;
+    margin-top: -1rem;
+}
+
+.app-description {
+    font-size: 1.1rem;
+    text-align: center;
+    color: var(--charcoal-500);
+    margin: -1rem 0 1rem 0;
+    max-width: 320px;
+    line-height: 1.5;
+}
+
+.lang-btn-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    max-width: 300px;
+}
+
+.lang-btn {
+    padding: 1.2rem;
+    color: var(--charcoal-900);
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.font-ar {
+    font-family: 'Cairo', sans-serif;
+}
+
+/* --- Selection Screen --- */
+.selection-screen {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 1.5rem;
+    position: relative;
+    background: var(--white);
+    max-width: 680px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.selection-header {
+    margin-bottom: 1.5rem;
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.back-btn {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    padding: 0;
+}
+
+.header-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--charcoal-900);
+}
+
+.selection-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    overflow-y: auto;
+    padding-bottom: 2rem;
+}
+
+.selection-item {
+    aspect-ratio: 1;
+    border-radius: 24px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    transition: all 0.1s ease;
+    transform: translateY(0);
+    gap: 0.5rem;
+}
+
+/* --- Game Screen --- */
+.game-screen {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    background: var(--white);
+    max-width: 680px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 2rem;
+}
+
+.fs-loading {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-end-screen {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--white);
+    padding: 2rem;
+    text-align: center;
+}
+
+.end-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: var(--charcoal-900);
+}
+
+.end-subtitle {
+    font-size: 1.2rem;
+    color: var(--charcoal-500);
+    margin-bottom: 3rem;
+}
+
+.end-controls {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.end-btn {
+    padding: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.end-btn-primary {
+    background: var(--charcoal-900);
+    color: white;
+    border: none;
+}
+
+.end-btn-secondary {
+    background: var(--white);
+    color: var(--charcoal-900);
+}
+
+.game-top-bar {
+    padding: 0 0 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+
+.game-back-btn {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: var(--charcoal-900);
+}
+
+.game-subtitle {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--charcoal-900);
+}
+
+.progress-bar-container {
+    display: flex;
+    gap: 4px;
+    padding: 0;
+    margin-bottom: 1rem;
+}
+
+.progress-dot {
+    flex: 1;
+    height: 4px;
+    border-radius: 2px;
+    transition: background 0.3s;
+}
+
+.card-area {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1000px;
+    cursor: pointer;
+    margin-bottom: 2rem;
+}
+
+.game-controls {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    z-index: 10;
+}
+
+.action-btn {
+    flex: 1;
+    height: 60px;
+    border-radius: 20px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.action-btn-primary {
+    background: var(--charcoal-900);
+    color: var(--white);
+    border: none;
+}
+
+.action-btn-secondary {
+    background: var(--white);
+    color: var(--charcoal-900);
+    border: 1px solid var(--charcoal-100);
+}
+
+/* --- Question Card --- */
+.question-card {
+    width: 100%;
+    height: 100%;
+    border-radius: 32px;
+    border: 4px solid var(--white);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.card-top-tag {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.card-tag-img-wrapper {
+    height: 70px;
+}
+
+.card-tag-img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+}
+
+.card-tag-fallback {
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 800;
+}
+
+.card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-question-text {
+    line-height: 1.3;
+    font-weight: 800;
+    color: inherit;
+    margin-bottom: 1rem;
+}
+
+.card-footer {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.8;
+}
+
+.card-footer-logo {
+    width: 30px;
+    height: 30px;
+}
+
+.card-footer-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.share-btn {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    z-index: 20;
+}
+
+/* --- Modals --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 1.5rem;
+    backdrop-filter: blur(4px);
+}
+
+.modal-content {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    animation: popIn 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.modal-title {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--charcoal-900);
+    margin-bottom: 2rem;
+    line-height: 1.4;
+}
+
+.modal-buttons {
+    display: flex;
+    width: 100%;
+    gap: 1rem;
+}
+
+.btn-modal {
+    flex: 1;
+    padding: 1rem;
+    border-radius: 16px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.btn-modal:active {
+    transform: scale(0.96);
+}
+
+.btn-danger {
+    background: var(--coral-500);
+    color: white;
+}
+
+.btn-cancel {
+    background: var(--charcoal-50);
+    color: var(--charcoal-900);
+}
