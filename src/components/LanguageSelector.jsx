@@ -18,14 +18,14 @@ const LanguageSelector = ({ onSelect }) => {
 
                 <div className="lang-btn-container">
                     <button
-                        onClick={() => onSelect('en')}
+                        onClick={() => setTimeout(() => onSelect('en'), 200)}
                         className="btn-3d lang-btn"
                     >
                         English
                     </button>
 
                     <button
-                        onClick={() => onSelect('ar')}
+                        onClick={() => setTimeout(() => onSelect('ar'), 200)}
                         className="btn-3d lang-btn font-ar"
                     >
                         عربي
