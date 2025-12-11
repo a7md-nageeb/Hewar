@@ -77,11 +77,10 @@ const SelectionScreen = ({ lang, onStart, onBack }) => {
                         <button
                             key={item.id}
                             onClick={() => step === 1 ? handleCategorySelect(item.id) : onStart(selectedCategory, item.id)}
-                            className="selection-item"
+                            className={`selection-item ${isRandom ? 'is-random' : ''}`}
                             style={{
-                                aspectRatio: isRandom ? '2.1 / 1' : 'auto',
+                                aspectRatio: isRandom ? undefined : 'auto',
                                 minHeight: '100px', /* Ensure decent touch target size */
-                                gridColumn: isRandom ? '1 / -1' : 'auto',
                                 background: style.bg,
                                 border: `2px solid ${style.border}`,
                                 color: style.color,

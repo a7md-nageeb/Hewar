@@ -402,6 +402,14 @@ button {
     /* Force width to respect parent grid cell */
 }
 
+.selection-item.is-random {
+    grid-column: 1 / -1;
+    width: 100%;
+    /* Desktop Default: Fixed height banner to prevent overlapping/huge size */
+    aspect-ratio: auto;
+    height: 180px;
+}
+
 /* --- Game Screen --- */
 .game-screen {
     height: 100%;
@@ -435,6 +443,12 @@ button {
 
     .app-title {
         font-size: 2rem;
+    }
+
+    /* Mobile: Keep the original aspect ratio for Surprise Me to avoid regression */
+    .selection-item.is-random {
+        aspect-ratio: 2.1 / 1;
+        height: auto;
     }
 }
 
