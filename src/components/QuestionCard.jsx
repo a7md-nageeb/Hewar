@@ -7,14 +7,14 @@ const QuestionCard = ({ question, lang, onNext }) => {
     const getGenreTheme = (genre) => {
         // Map genres to specific colors and assets based on provided designs
         switch (genre) {
-            case 'Funny': return { bg: '#8B4513', text: '#FFFFFF', accent: '#FFF5E6', img: '/assets/funny.png' }; // Brown/Orange
+            case 'Funny': return { bg: '#8B4513', text: '#FFFFFF', accent: '#FFF5E6', img: 'assets/funny.png' }; // Brown/Orange
             case 'Awkward':
-            case 'uncomfortable': return { bg: '#109E45', text: '#FFFFFF', accent: '#E6FFF0', img: '/assets/awkward.png' }; // Green
-            case 'Deep': return { bg: '#296D8F', text: '#FFFFFF', accent: '#E6F4FF', img: '/assets/deep.png' }; // Blue (Cyan-ish)
-            case 'Honest': return { bg: '#6B8E23', text: '#FFFFFF', accent: '#F5FFE6', img: '/assets/honest.png' }; // Lime/Olive
+            case 'uncomfortable': return { bg: '#109E45', text: '#FFFFFF', accent: '#E6FFF0', img: 'assets/awkward.png' }; // Green
+            case 'Deep': return { bg: '#296D8F', text: '#FFFFFF', accent: '#E6F4FF', img: 'assets/deep.png' }; // Blue (Cyan-ish)
+            case 'Honest': return { bg: '#6B8E23', text: '#FFFFFF', accent: '#F5FFE6', img: 'assets/honest.png' }; // Lime/Olive
             case 'Know me':
-            case 'know me better': return { bg: '#6A2C70', text: '#FFFFFF', accent: '#FDE6FF', img: '/assets/know_me.png' }; // Purple
-            case 'What If': return { bg: '#1A2C4F', text: '#FFFFFF', accent: '#E6F0FF', img: '/assets/what_if.png' }; // Navy Blue
+            case 'know me better': return { bg: '#6A2C70', text: '#FFFFFF', accent: '#FDE6FF', img: 'assets/know_me.png' }; // Purple
+            case 'What If': return { bg: '#1A2C4F', text: '#FFFFFF', accent: '#E6F0FF', img: 'assets/what_if.png' }; // Navy Blue
             default: return { bg: 'var(--green-50)', text: 'var(--green-900)', accent: 'var(--green-800)', img: null }; // Default
         }
     };
@@ -73,7 +73,7 @@ const QuestionCard = ({ question, lang, onNext }) => {
 
                 {/* Footer Branding */}
                 <div className="card-footer">
-                    <img src="/logo.png" alt="Logo" className="card-footer-logo" />
+                    <img src="logo.png" alt="Logo" className="card-footer-logo" />
                     <div className="card-footer-text">
                         <span style={{ fontWeight: '800', fontSize: '0.9rem' }}>Hewar</span>
                         <span style={{ fontSize: '0.8rem', opacity: 0.8 }}>Hewar.com</span>
@@ -86,7 +86,7 @@ const QuestionCard = ({ question, lang, onNext }) => {
                 onClick={handleShare}
                 className="btn-3d share-btn"
             >
-                <img src="/assets/icons/share.svg" alt="Share" style={{ width: '24px', height: '24px' }} />
+                <img src="assets/icons/share.svg" alt="Share" style={{ width: '24px', height: '24px' }} />
             </button>
         </>
     );

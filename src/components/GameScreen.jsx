@@ -59,7 +59,7 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
         return (
             <div className="game-end-screen">
                 <div className="logo-container">
-                    <img src="/logo.png" alt="Logo" className="logo-img" />
+                    <img src="logo.png" alt="Logo" className="logo-img" />
                 </div>
                 <h1 className="end-title">
                     {lang === 'en' ? 'Session Complete!' : 'خلصت الجولة!'}
@@ -74,7 +74,7 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
                         className="btn-3d end-btn end-btn-primary"
                     >
                         {lang === 'en' ? 'Play Again' : 'العب تاني'}
-                        <img src="/assets/icons/replay.svg" alt="Replay" style={{ width: '24px', height: '24px', filter: 'invert(1)' }} />
+                        <img src="assets/icons/replay.svg" alt="Replay" style={{ width: '24px', height: '24px', filter: 'invert(1)' }} />
                     </button>
 
                     <button
@@ -82,7 +82,7 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
                         className="btn-3d end-btn end-btn-secondary"
                     >
                         {lang === 'en' ? 'Back to Home' : 'القائمة الرئيسية'}
-                        <img src="/assets/icons/home.svg" alt="Home" style={{ width: '24px', height: '24px' }} />
+                        <img src="assets/icons/home.svg" alt="Home" style={{ width: '24px', height: '24px' }} />
                     </button>
                 </div>
             </div>
@@ -115,8 +115,8 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
                         gap: '4px'
                     }}
                 >
-                    <img src="/assets/icons/arrow-left-alt2.svg" alt="Back" style={{ width: '24px', height: '24px', transform: lang === 'ar' ? 'scaleX(-1)' : 'none' }} />
-                    <img src="/assets/icons/leave.svg" alt="Leave" style={{ width: '24px', height: '24px', transform: lang === 'ar' ? 'scaleX(-1)' : 'none' }} />
+                    <img src="assets/icons/arrow-left-alt2.svg" alt="Back" style={{ width: '24px', height: '24px', transform: lang === 'ar' ? 'scaleX(-1)' : 'none' }} />
+                    <img src="assets/icons/leave.svg" alt="Leave" style={{ width: '24px', height: '24px', transform: lang === 'ar' ? 'scaleX(-1)' : 'none' }} />
                 </button>
 
                 <div className="game-subtitle">
@@ -149,13 +149,13 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
                 <ActionButton
                     label={lang === 'en' ? 'Back' : 'اللي فات'}
                     onClick={() => { if (currentIndex > 0) setCurrentIndex(prev => prev - 1) }}
-                    icon="/assets/icons/back.svg"
+                    icon="assets/icons/back.svg"
                 />
                 <ActionButton
                     label={lang === 'en' ? 'Next' : 'التالي'}
                     onClick={handleNext}
                     primary
-                    icon="/assets/icons/next.svg"
+                    icon="assets/icons/next.svg"
                     iconRight
                 />
             </div>

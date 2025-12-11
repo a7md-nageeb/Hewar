@@ -5,7 +5,7 @@ const LanguageSelector = ({ onSelect }) => {
         <div className="language-screen">
             <div className="lang-content-wrapper">
                 <div className="logo-container">
-                    <img src="/logo.png" alt="Hewar Logo" className="logo-img" />
+                    <img src="logo.png" alt="Hewar Logo" className="logo-img" />
                 </div>
 
                 <h1 className="app-title">
@@ -35,7 +35,7 @@ const LanguageSelector = ({ onSelect }) => {
 
             <div className="creator-footer">
                 <span className="creator-text">Created by</span>
-                <img src="/signature.png" alt="Ahmed Naguib" className="signature-img" />
+                <img src="signature.svg" alt="Ahmed Naguib" className="signature-img" />
             </div>
         </div>
     );

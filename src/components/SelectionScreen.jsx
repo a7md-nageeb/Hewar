@@ -60,7 +60,7 @@ const SelectionScreen = ({ lang, onStart, onBack }) => {
                         transform: lang === 'ar' ? 'scaleX(-1)' : 'none'
                     }}
                 >
-                    <img src="/assets/icons/arrow-left-alt2.svg" alt="Back" style={{ width: '24px', height: '24px' }} />
+                    <img src="assets/icons/arrow-left-alt2.svg" alt="Back" style={{ width: '24px', height: '24px' }} />
                 </button>
                 <h2 className="header-title">
                     {renderHeader()}
@@ -103,7 +103,7 @@ const SelectionScreen = ({ lang, onStart, onBack }) => {
                                 e.currentTarget.style.boxShadow = `0 6px 0 ${style.shadow}`;
                             }}
                         >
-                            {isRandom && <img src="/assets/icons/random.svg" alt="" style={{ width: '24px', height: '24px', filter: 'invert(1)' }} />}
+                            {isRandom && <img src="assets/icons/random.svg" alt="" style={{ width: '24px', height: '24px', filter: 'invert(1)' }} />}
                             {isRandom ? (lang === 'en' ? 'Surprise Me' : 'فاجئني') : (lang === 'en' ? item.label_en : item.label_ar)}
                         </button>
                     );
