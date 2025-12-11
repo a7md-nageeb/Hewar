@@ -368,8 +368,10 @@ button {
 
 .selection-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem;
+    align-content: start;
+    /* Prevent rows from stretching to fill height */
     overflow-y: auto;
     padding-bottom: 2rem;
     flex: 1;
@@ -392,6 +394,11 @@ button {
     transition: all 0.1s ease;
     transform: translateY(0);
     gap: 0.5rem;
+    overflow-wrap: break-word;
+    /* Ensure long words break */
+    word-break: break-word;
+    width: 100%;
+    /* Force width to respect parent grid cell */
 }
 
 /* --- Game Screen --- */

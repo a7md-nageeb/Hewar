@@ -79,7 +79,8 @@ const SelectionScreen = ({ lang, onStart, onBack }) => {
                             onClick={() => step === 1 ? handleCategorySelect(item.id) : onStart(selectedCategory, item.id)}
                             className="selection-item"
                             style={{
-                                aspectRatio: isRandom ? '2.1 / 1' : '1',
+                                aspectRatio: isRandom ? '2.1 / 1' : 'auto',
+                                minHeight: '100px', /* Ensure decent touch target size */
                                 gridColumn: isRandom ? '1 / -1' : 'auto',
                                 background: style.bg,
                                 border: `2px solid ${style.border}`,
