@@ -139,9 +139,9 @@
 
     /* --- App Theme Tokens --- */
     --color-bg-primary: var(--white);
-    --color-bg-secondary: var(--charcoal-50);
-    --color-text-primary: var(--charcoal-900);
-    --color-text-secondary: var(--charcoal-500);
+    --color-bg-secondary: var(--ocean-50);
+    --color-text-primary: var(--ocean-900);
+    --color-text-secondary: var(--ocean-600);
 
     --font-en: 'Nunito', sans-serif;
     --font-ar: 'Cairo', sans-serif;
@@ -203,29 +203,29 @@ button:active {
 /* Common Classes we might use in React */
 .btn-3d {
     background: var(--white);
-    border: 1px solid var(--charcoal-100);
+    border: 1px solid var(--ocean-100);
     border-radius: 16px;
-    box-shadow: 0 4px 0 var(--charcoal-100);
+    box-shadow: 0 4px 0 var(--ocean-100);
     transition: all 0.1s ease;
 }
 
 .btn-3d:active {
     transform: translateY(4px);
-    box-shadow: 0 0px 0 var(--charcoal-100);
+    box-shadow: 0 0px 0 var(--ocean-100);
 }
 
 .btn-tertiary {
-    background: var(--charcoal-50);
+    background: var(--ocean-50);
     border: none;
     border-radius: 16px;
     box-shadow: none;
-    color: var(--charcoal-900);
+    color: var(--ocean-900);
     transition: background-color 0.2s ease, transform 0.1s ease;
     cursor: pointer;
 }
 
 .btn-tertiary:active {
-    background: var(--charcoal-100);
+    background: var(--ocean-100);
     transform: scale(0.96);
 }
 
@@ -282,7 +282,7 @@ button:active {
 .app-title {
     font-size: 2.5rem;
     font-weight: 800;
-    color: var(--charcoal-900);
+    color: var(--ocean-900);
     text-align: center;
     margin-top: -1rem;
 }
@@ -290,7 +290,7 @@ button:active {
 .app-description {
     font-size: 1.1rem;
     text-align: center;
-    color: var(--charcoal-500);
+    color: var(--ocean-500);
     margin: -1rem 0 1rem 0;
     max-width: 320px;
     line-height: 1.5;
@@ -306,7 +306,7 @@ button:active {
 
 .lang-btn {
     padding: 1.2rem;
-    color: var(--charcoal-900);
+    color: var(--ocean-900);
     font-size: 1.2rem;
     font-weight: 700;
 }
@@ -325,7 +325,7 @@ button:active {
 
 .creator-text {
     font-size: 0.9rem;
-    color: var(--charcoal-300);
+    color: var(--ocean-300);
     font-weight: 500;
 }
 
@@ -370,7 +370,7 @@ button:active {
 .header-title {
     font-size: 1.8rem;
     font-weight: 800;
-    color: var(--charcoal-900);
+    color: var(--ocean-900);
 }
 
 .selection-grid {
@@ -480,12 +480,12 @@ button:active {
     font-size: 2.5rem;
     font-weight: 800;
     margin-bottom: 1rem;
-    color: var(--charcoal-900);
+    color: var(--ocean-900);
 }
 
 .end-subtitle {
     font-size: 1.2rem;
-    color: var(--charcoal-500);
+    color: var(--ocean-500);
     margin-bottom: 3rem;
 }
 
@@ -508,14 +508,14 @@ button:active {
 }
 
 .end-btn-primary {
-    background: var(--charcoal-900);
-    color: white;
+    background: var(--ocean-300);
+    color: var(--white);
     border: none;
 }
 
 .end-btn-secondary {
     background: var(--white);
-    color: var(--charcoal-900);
+    color: var(--ocean-900);
 }
 
 .game-top-bar {
@@ -534,19 +534,19 @@ button:active {
     align-items: center;
     justify-content: center;
     font-size: 1.2rem;
-    color: var(--charcoal-900);
+    color: var(--ocean-900);
 }
 
 .game-back-btn:active {
     transform: scale(0.9);
-    background-color: var(--charcoal-50);
+    background-color: var(--ocean-50);
     border-radius: 50%;
 }
 
 .game-subtitle {
     font-size: 1.1rem;
     font-weight: 800;
-    color: var(--charcoal-900);
+    color: var(--ocean-900);
 }
 
 .progress-bar-container {
@@ -600,15 +600,15 @@ button:active {
 }
 
 .action-btn-primary {
-    background: var(--charcoal-900);
+    background: var(--ocean-300);
     color: var(--white);
     border: none;
 }
 
 .action-btn-secondary {
     background: var(--white);
-    color: var(--charcoal-900);
-    border: 1px solid var(--charcoal-100);
+    color: var(--ocean-900);
+    border: 1px solid var(--ocean-100);
 }
 
 /* --- Question Card --- */
@@ -707,7 +707,7 @@ button:active {
     border: none;
     font-size: 2rem;
     line-height: 1;
-    color: var(--charcoal-500);
+    color: var(--ocean-500);
     cursor: pointer;
     padding: 0;
 }
@@ -717,8 +717,8 @@ button:active {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: var(--charcoal-50);
-    border: 1px solid var(--charcoal-100);
+    background: var(--ocean-50);
+    border: 1px solid var(--ocean-100);
     border-radius: 16px;
     padding: 1.5rem 1rem;
     cursor: pointer;
@@ -826,7 +826,7 @@ button:active {
 .modal-title {
     font-size: 1.4rem;
     font-weight: 800;
-    color: var(--charcoal-900);
+    color: var(--ocean-900);
     margin-bottom: 2rem;
     line-height: 1.4;
 }
@@ -858,8 +858,8 @@ button:active {
 }
 
 .btn-cancel {
-    background: var(--charcoal-50);
-    color: var(--charcoal-900);
+    background: var(--ocean-50);
+    color: var(--ocean-900);
 }
 
 /* --- Loading Overlay --- */
@@ -884,14 +884,14 @@ button:active {
 .loading-text {
     font-size: 1.2rem;
     font-weight: 700;
-    color: var(--charcoal-900);
+    color: var(--ocean-900);
 }
 
 .spinner {
     width: 40px;
     height: 40px;
-    border: 4px solid var(--charcoal-100);
-    border-top: 4px solid var(--charcoal-900);
+    border: 4px solid var(--ocean-100);
+    border-top: 4px solid var(--ocean-300);
     border-radius: 50%;
     animation: spin 1s linear infinite;
 }

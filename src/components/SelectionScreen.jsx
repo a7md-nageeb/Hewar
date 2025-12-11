@@ -47,16 +47,16 @@ const SelectionScreen = ({ lang, onStart, onBack }) => {
     // Standard style for all items
     const defaultStyle = {
         bg: 'var(--white)',
-        border: 'var(--charcoal-100)',
-        shadow: 'var(--charcoal-100)',
-        color: 'var(--charcoal-900)'
+        border: 'var(--ocean-100)',
+        shadow: 'var(--ocean-100)',
+        color: 'var(--ocean-900)'
     };
 
     // Random style
     const randomStyle = {
-        bg: 'var(--charcoal-900)',
-        border: 'var(--charcoal-900)',
-        shadow: 'var(--charcoal-500)',
+        bg: 'var(--ocean-900)',
+        border: 'var(--ocean-900)',
+        shadow: 'var(--ocean-500)',
         color: 'var(--white)'
     };
 
