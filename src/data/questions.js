@@ -604,6 +604,43 @@ export const questions = [
         text_ar: "لو كل بني آدم عليه تيكت تحذير، التيكت بتاعك مكتوب عليه إيه؟",
         category: ['Lovers', 'First Date', 'Friends', 'Coworkers'],
         genre: 'Know me'
+    },
+
+    // --- Honest ---
+    {
+        id: 'h1',
+        text_en: "What's the first thing you judged me for when we met?",
+        text_ar: "إيه أول حاجة حكمت عليا بسببها أول ما اتقابلنا؟",
+        category: ['Friends', 'Lovers', 'Family'],
+        genre: 'Honest'
+    },
+    {
+        id: 'h2',
+        text_en: "Do you think I'm too nice or too mean?",
+        text_ar: "شايفني طيب بزيادة ولا قاسي بزيادة؟",
+        category: ['Friends', 'Lovers', 'Family', 'Coworkers'],
+        genre: 'Honest'
+    },
+    {
+        id: 'h3',
+        text_en: "What's a habit of mine that genuinely annoys you?",
+        text_ar: "إيه العادة اللي فيا وبتعصبك بجد؟",
+        category: ['Friends', 'Lovers', 'Family'],
+        genre: 'Honest'
+    },
+    {
+        id: 'h4',
+        text_en: "If you could change one decision I made in the past, what would it be?",
+        text_ar: "لو تقدر تغير قرار واحد أخدته في الماضي، هيكون إيه؟",
+        category: ['Friends', 'Lovers', 'Family'],
+        genre: 'Honest'
+    },
+    {
+        id: 'h5',
+        text_en: "Have I ever let you down without knowing it?",
+        text_ar: "عمرك حسيت إني خذلتك وأنا مش واخد بالي؟",
+        category: ['Friends', 'Lovers'],
+        genre: 'Honest'
     }
 ];
 
@@ -623,4 +660,5 @@ export const genres = [
     { id: 'Awkward', label_en: 'Awkward', label_ar: 'محرج' },
     { id: 'What If', label_en: 'What If...', label_ar: 'ماذا لو...' },
     { id: 'Know me', label_en: 'Know me', label_ar: 'اعرفني أكتر' },
+    { id: 'Honest', label_en: 'Honest', label_ar: 'بصراحة' },
 ];

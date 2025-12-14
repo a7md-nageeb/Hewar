@@ -100,7 +100,7 @@ const QuestionCard = ({ question, lang, onNext }) => {
                     <h2 className="card-question-text" style={{
                         fontSize: lang === 'ar' ? '1.8rem' : '2.2rem',
                         direction: lang === 'ar' ? 'rtl' : 'ltr',
-                        fontFamily: lang === 'ar' ? 'Cairo, sans-serif' : 'Nunito, sans-serif',
+                        fontFamily: lang === 'ar' ? 'Nunito, Cairo, sans-serif' : 'Nunito, sans-serif',
                         textAlign: lang === 'ar' ? 'right' : 'left'
                     }}>
                         {lang === 'ar' ? question.text_ar : question.text_en}

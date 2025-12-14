@@ -130,7 +130,7 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
             <div className="progress-bar-container">
                 {Array.from({ length: totalQuestions }).map((_, i) => (
                     <div key={i} className="progress-dot" style={{
-                        background: i <= currentIndex ? 'var(--charcoal-900)' : 'var(--charcoal-100)',
+                        background: i <= currentIndex ? 'var(--ocean-600)' : 'var(--ocean-100)',
                     }} />
                 ))}
             </div>

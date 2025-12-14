@@ -144,7 +144,7 @@
     --color-text-secondary: var(--ocean-600);
 
     --font-en: 'Nunito', sans-serif;
-    --font-ar: 'Cairo', sans-serif;
+    --font-ar: 'Nunito', 'Cairo', sans-serif;
 
     /* 3D Button Utility Variables */
     --shadow-sm: 0 2px 0 rgba(0, 0, 0, 0.05);
@@ -508,7 +508,7 @@ button:active {
 }
 
 .end-btn-primary {
-    background: var(--ocean-300);
+    background: var(--ocean-900);
     color: var(--white);
     border: none;
 }
@@ -600,7 +600,7 @@ button:active {
 }
 
 .action-btn-primary {
-    background: var(--ocean-300);
+    background: var(--ocean-900);
     color: var(--white);
     border: none;
 }

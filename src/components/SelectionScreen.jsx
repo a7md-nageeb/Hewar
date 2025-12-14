@@ -10,8 +10,8 @@ const SelectionScreen = ({ lang, onStart, onBack }) => {
     const getCompatibleGenres = (categoryId) => {
         // 🚫 Not Recommended (Hard Filter)
         const forbidden = {
-            'First Time Meeting': ['Uncomfortable', 'Know Me Better', 'Brutally Honest'],
-            'Coworkers': ['Uncomfortable', 'Know Me Better', 'Brutally Honest'],
+            'First Time Meeting': ['Uncomfortable', 'Know Me Better', 'Honest'],
+            'Coworkers': ['Uncomfortable', 'Know Me Better', 'Honest'],
             'First Date': ['Know Me Better'],
         };
 
