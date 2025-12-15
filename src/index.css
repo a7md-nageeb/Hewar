@@ -681,7 +681,7 @@ button:active {
 .action-btn-secondary {
     background: var(--white);
     color: var(--ocean-900);
-    border: 1px solid var(--ocean-100);
+    border: none;
 }
 
 /* --- Question Card --- */
