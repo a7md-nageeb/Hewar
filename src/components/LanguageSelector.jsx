@@ -47,7 +47,7 @@ const LanguageSelector = ({ lang, onLanguageChange, onStart }) => {
 
                 <div className="lang-btn-container home-cta-container">
                     <button
-                        onClick={onStart}
+                        onClick={() => setTimeout(onStart, 150)}
                         className="btn-3d lang-btn action-btn-primary"
                         style={{ width: '100%', fontSize: '1.4rem' }}
                     >

@@ -70,7 +70,7 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
 
                 <div className="end-controls">
                     <button
-                        onClick={handleReplay}
+                        onClick={() => setTimeout(handleReplay, 150)}
                         className="btn-3d end-btn end-btn-primary"
                     >
                         {lang === 'en' ? 'Play Again' : 'العب تاني'}
@@ -78,7 +78,7 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
                     </button>
 
                     <button
-                        onClick={onHome}
+                        onClick={() => setTimeout(onHome, 150)}
                         className="btn-3d end-btn end-btn-secondary"
                     >
                         {lang === 'en' ? 'Back to Home' : 'القائمة الرئيسية'}
@@ -148,11 +148,15 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
             <div className="game-controls">
                 <ActionButton
                     label={lang === 'en' ? 'Back' : 'اللي فات'}
-                    onClick={() => { if (currentIndex > 0) setCurrentIndex(prev => prev - 1) }}
+                    onClick={() => {
+                        setTimeout(() => {
+                            if (currentIndex > 0) setCurrentIndex(prev => prev - 1)
+                        }, 150);
+                    }}
                 />
                 <ActionButton
                     label={lang === 'en' ? 'Next' : 'التالي'}
-                    onClick={handleNext}
+                    onClick={() => setTimeout(handleNext, 150)}
                     primary
                 />
             </div>
