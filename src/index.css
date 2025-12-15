@@ -113,6 +113,10 @@
     --ocean-800: #183560;
     --ocean-900: #0F2343;
 
+    /* --- Bottom Sheet & Overlay --- */
+    --overlay-bg: rgba(0, 0, 0, 0.4);
+    --sheet-bg: var(--white);
+
     /* --- Lilac --- */
     --lilac-50: #F5F3FF;
     --lilac-100: #D6CFFF;
@@ -138,13 +142,13 @@
     --pink-900: #42173E;
 
     /* --- App Theme Tokens --- */
-    --color-bg-primary: var(--white);
+    --color-bg-primary: var(--charcoal-50);
     --color-bg-secondary: var(--ocean-50);
     --color-text-primary: var(--ocean-900);
     --color-text-secondary: var(--ocean-600);
 
     --font-en: 'Nunito', sans-serif;
-    --font-ar: 'Nunito', 'Cairo', sans-serif;
+    --font-ar: 'Rubik', sans-serif;
 
     /* 3D Button Utility Variables */
     --shadow-sm: 0 2px 0 rgba(0, 0, 0, 0.05);
@@ -202,16 +206,38 @@ button:active {
 
 /* Common Classes we might use in React */
 .btn-3d {
-    background: var(--white);
-    border: 1px solid var(--ocean-100);
+    /* Layout */
+    display: flex;
+    padding: 16px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    /* Style */
     border-radius: 16px;
-    box-shadow: 0 4px 0 var(--ocean-100);
+    background: rgba(255, 255, 255, 0.75);
+    box-shadow: 0 2px 2px 0 rgba(255, 255, 255, 0.40) inset, 0 -2px 2px 0 rgba(20, 20, 20, 0.08) inset, 0 2px 4px 0 rgba(20, 20, 20, 0.10), 0 0 0 4px rgba(245, 245, 247, 0.50);
+    border: none;
+    /* Override previous border */
     transition: all 0.1s ease;
 }
 
 .btn-3d:active {
-    transform: translateY(4px);
-    box-shadow: 0 0px 0 var(--ocean-100);
+    /* Layout */
+    display: flex;
+    padding: 20px 16px 12px 16px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    /* Style */
+    border-radius: 16px;
+    background: rgba(20, 20, 20, 0.02);
+    box-shadow: 0 2px 2px 0 rgba(20, 20, 20, 0.05) inset, 0 -2px 2px 0 rgba(20, 20, 20, 0.15) inset, 0 0 0 2px rgba(255, 255, 255, 0.30);
+    transform: none;
+    /* Removing scale since padding handles the shift */
 }
 
 .btn-tertiary {
@@ -242,7 +268,44 @@ button:active {
     padding-bottom: env(safe-area-inset-bottom);
 }
 
-/* --- Language Selector --- */
+/* --- Language/Home Screen --- */
+.home-screen {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.home-top-bar {
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+    /* Align pill to the right like in the screenshot? Or Center? Screenshot showed pill, typically top right or left. Let's go Top Right for now or Center if requested. User said "small button at the top", defaulted to right usually but let's Center it based on typical "Home" layouts or Keep consistent. Actually, screenshot shows centered pill. Let's center it. */
+    justify-content: center;
+    align-items: center;
+}
+
+.lang-pill-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--white);
+    border: 1px solid var(--ocean-100);
+    border-radius: 50px;
+    color: var(--ocean-900);
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.lang-pill-btn:active {
+    background: var(--ocean-50);
+    transform: scale(0.96);
+}
+
 .language-screen {
     display: flex;
     flex-direction: column;
@@ -250,6 +313,7 @@ button:active {
     justify-content: space-between;
     height: 100%;
     padding: 2rem;
+    /* Will be overridden by mobile media query but good base */
     width: 100%;
     max-width: 100vw;
 }
@@ -342,7 +406,7 @@ button:active {
     height: 100%;
     padding: 1.5rem;
     position: relative;
-    background: var(--white);
+    /* background: var(--white); inherited from body/app-container */
     max-width: 680px;
     margin: 0 auto;
     width: 100%;
@@ -378,6 +442,8 @@ button:active {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem;
     align-content: start;
+    padding: 4px;
+    /* Fix clipped shadows */
     /* Prevent rows from stretching to fill height */
     overflow-y: auto;
     padding-bottom: 2rem;
@@ -423,7 +489,7 @@ button:active {
     flex-direction: column;
     position: relative;
     overflow: hidden;
-    background: var(--white);
+    /* background: var(--white); inherited */
     max-width: 680px;
     margin: 0 auto;
     width: 100%;
@@ -471,7 +537,7 @@ button:active {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: var(--white);
+    /* background: var(--white); inherited */
     padding: 2rem;
     text-align: center;
 }
@@ -578,7 +644,7 @@ button:active {
     padding: 0;
     display: flex;
     justify-content: center;
-    gap: 1.5rem;
+    gap: 1rem;
     z-index: 10;
 }
 
@@ -591,7 +657,7 @@ button:active {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
+    gap: 16px;
     transition: transform 0.1s;
 }
 
@@ -600,9 +666,16 @@ button:active {
 }
 
 .action-btn-primary {
-    background: var(--ocean-900);
+    background: var(--ocean-300);
     color: var(--white);
     border: none;
+    /* Maintain layout from .btn-3d */
+}
+
+.action-btn-primary:active {
+    background: var(--ocean-400);
+    /* Slightly darker on press */
+    /* Ensure padding shift happens via .btn-3d:active */
 }
 
 .action-btn-secondary {
@@ -835,6 +908,92 @@ button:active {
     display: flex;
     width: 100%;
     gap: 1rem;
+}
+
+.modal-buttons {
+    display: flex;
+    width: 100%;
+    gap: 1rem;
+}
+
+/* --- Bottom Sheet (Generic) --- */
+.bottom-sheet-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--overlay-bg);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    animation: fadeIn 0.3s ease;
+    backdrop-filter: blur(2px);
+}
+
+.bottom-sheet-content {
+    background-color: var(--sheet-bg);
+    border-radius: 24px 24px 0 0;
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.sheet-handle {
+    width: 40px;
+    height: 5px;
+    background-color: var(--charcoal-200);
+    border-radius: 10px;
+    margin: 0 auto 1.5rem auto;
+}
+
+.sheet-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--ocean-900);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.sheet-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.sheet-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    border-radius: 16px;
+    border: 1px solid var(--ocean-100);
+    background: var(--white);
+    color: var(--ocean-900);
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.sheet-option:active {
+    background: var(--ocean-50);
+    transform: scale(0.98);
+}
+
+.sheet-option.active {
+    background: var(--ocean-50);
+    border-color: var(--ocean-300);
+    color: var(--ocean-900);
+}
+
+.check-icon {
+    font-weight: 800;
+    color: var(--ocean-500);
 }
 
 .btn-modal {

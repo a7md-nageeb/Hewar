@@ -149,14 +149,11 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
                 <ActionButton
                     label={lang === 'en' ? 'Back' : 'اللي فات'}
                     onClick={() => { if (currentIndex > 0) setCurrentIndex(prev => prev - 1) }}
-                    icon="assets/icons/back.svg"
                 />
                 <ActionButton
                     label={lang === 'en' ? 'Next' : 'التالي'}
                     onClick={handleNext}
                     primary
-                    icon="assets/icons/next.svg"
-                    iconRight
                 />
             </div>
 

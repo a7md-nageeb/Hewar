@@ -99,30 +99,11 @@ const SelectionScreen = ({ lang, onStart, onBack }) => {
                         <button
                             key={item.id}
                             onClick={() => step === 1 ? handleCategorySelect(item.id) : handleGenreSelect(item.id)}
-                            className={`selection-item ${isRandom ? 'is-random' : ''}`}
+                            className={`selection-item btn-3d ${isRandom ? 'is-random action-btn-primary' : ''}`}
                             style={{
                                 aspectRatio: isRandom ? undefined : 'auto',
                                 minHeight: '100px', /* Ensure decent touch target size */
-                                background: style.bg,
-                                border: `2px solid ${style.border}`,
-                                color: style.color,
-                                boxShadow: `0 6px 0 ${style.shadow}`,
-                            }}
-                            onMouseDown={(e) => {
-                                e.currentTarget.style.transform = 'translateY(6px)';
-                                e.currentTarget.style.boxShadow = 'none';
-                            }}
-                            onMouseUp={(e) => {
-                                e.currentTarget.style.transform = 'translateY(0)';
-                                e.currentTarget.style.boxShadow = `0 6px 0 ${style.shadow}`;
-                            }}
-                            onTouchStart={(e) => {
-                                e.currentTarget.style.transform = 'translateY(6px)';
-                                e.currentTarget.style.boxShadow = 'none';
-                            }}
-                            onTouchEnd={(e) => {
-                                e.currentTarget.style.transform = 'translateY(0)';
-                                e.currentTarget.style.boxShadow = `0 6px 0 ${style.shadow}`;
+                                /* Maintaining layout/size constraints as requested */
                             }}
                         >
                             {isRandom && <img src="assets/icons/random.svg" alt="" style={{ width: '24px', height: '24px', filter: 'invert(1)' }} />}

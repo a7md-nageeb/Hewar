@@ -16,6 +16,10 @@ function App() {
 
     const handleLanguageSelect = (selectedLang) => {
         setLang(selectedLang);
+        // Do not change view here anymore
+    };
+
+    const handleStart = () => {
         setView('selection');
     };
 
@@ -31,7 +35,13 @@ function App() {
 
     return (
         <div className="app-container">
-            {view === 'language' && <LanguageSelector onSelect={handleLanguageSelect} />}
+            {view === 'language' && (
+                <LanguageSelector
+                    lang={lang}
+                    onLanguageChange={handleLanguageSelect}
+                    onStart={handleStart}
+                />
+            )}
 
             {view === 'selection' && (
                 <SelectionScreen
