@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import QuestionCard from './QuestionCard';
-import { questions } from '../data/questions';
+import { questions, categories } from '../data/questions';
 
 const getRandomQuestions = (category, genre, count = 10) => {
     let filtered;
@@ -120,7 +120,10 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
                 </button>
 
                 <div className="game-subtitle">
-                    {category} Pack
+                    {lang === 'ar'
+                        ? categories.find(c => c.id === category)?.label_ar || category
+                        : `${category} Pack`
+                    }
                 </div>
 
                 <div style={{ width: '40px' }}></div> {/* Spacer to center title */}
