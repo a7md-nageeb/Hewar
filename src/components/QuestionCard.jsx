@@ -7,16 +7,17 @@ const QuestionCard = ({ question, lang, onNext }) => {
 
     const getGenreTheme = (genre) => {
         // Map genres to specific colors and assets based on provided designs
+        const langPath = lang === 'ar' ? 'ar' : 'en';
         switch (genre) {
-            case 'Funny': return { bg: '#8B4513', text: '#FFFFFF', accent: '#FFF5E6', img: 'assets/funny.png' }; // Brown/Orange
+            case 'Funny': return { bg: 'var(--orange-50)', text: 'var(--orange-900)', accent: 'var(--orange-200)', img: `assets/vibes/${langPath}/funny.png` }; // Orange
             case 'Awkward':
-            case 'uncomfortable': return { bg: '#109E45', text: '#FFFFFF', accent: '#E6FFF0', img: 'assets/awkward.png' }; // Green
-            case 'Deep': return { bg: '#296D8F', text: '#FFFFFF', accent: '#E6F4FF', img: 'assets/deep.png' }; // Blue (Cyan-ish)
-            case 'Honest': return { bg: '#6B8E23', text: '#FFFFFF', accent: '#F5FFE6', img: 'assets/honest.png' }; // Lime/Olive
+            case 'uncomfortable': return { bg: 'var(--green-50)', text: 'var(--green-900)', accent: 'var(--green-200)', img: `assets/vibes/${langPath}/awkward.png` }; // Green
+            case 'Deep': return { bg: 'var(--ocean-50)', text: 'var(--ocean-900)', accent: 'var(--ocean-200)', img: `assets/vibes/${langPath}/deep.png` }; // Ocean
+            case 'Honest': return { bg: 'var(--lime-50)', text: 'var(--lime-900)', accent: 'var(--lime-200)', img: `assets/vibes/${langPath}/honest.png` }; // Lime
             case 'Know me':
-            case 'know me better': return { bg: '#6A2C70', text: '#FFFFFF', accent: '#FDE6FF', img: 'assets/know_me.png' }; // Purple
-            case 'What If': return { bg: '#1A2C4F', text: '#FFFFFF', accent: '#E6F0FF', img: 'assets/what_if.png' }; // Navy Blue
-            default: return { bg: 'var(--green-50)', text: 'var(--green-900)', accent: 'var(--green-800)', img: null }; // Default
+            case 'know me better': return { bg: 'var(--lilac-50)', text: 'var(--lilac-900)', accent: 'var(--lilac-200)', img: `assets/vibes/${langPath}/know_me.png` }; // Lilac
+            case 'What If': return { bg: 'var(--cyan-50)', text: 'var(--cyan-900)', accent: 'var(--cyan-200)', img: `assets/vibes/${langPath}/what_if.png` }; // Cyan
+            default: return { bg: 'var(--green-50)', text: 'var(--green-900)', accent: 'var(--green-200)', img: null }; // Default
         }
     };
 
@@ -88,7 +89,7 @@ const QuestionCard = ({ question, lang, onNext }) => {
                     {!theme.img && (
                         <div className="card-tag-fallback" style={{
                             background: theme.accent,
-                            color: theme.bg,
+                            color: theme.text,
                         }}>
                             <span>👾</span> {question.genre}
                         </div>
@@ -121,9 +122,14 @@ const QuestionCard = ({ question, lang, onNext }) => {
                     onClick={handleShareClick}
                     className="btn-3d share-btn"
                     disabled={isSharing}
+                    style={{
+                        right: lang === 'ar' ? 'auto' : '1.5rem',
+                        left: lang === 'ar' ? '1.5rem' : 'auto',
+                        flexDirection: lang === 'ar' ? 'row-reverse' : 'row'
+                    }}
                 >
                     <img src="assets/icons/share.svg" alt="" style={{ width: '20px', height: '20px' }} />
-                    <span>{isSharing ? '...' : 'Share'}</span>
+                    <span>{isSharing ? '...' : (lang === 'ar' ? 'مشاركة' : 'Share')}</span>
                 </button>
             </div>
         </>
