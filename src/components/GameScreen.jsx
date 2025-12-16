@@ -44,6 +44,31 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
         }
     };
 
+    const handlePrevious = () => {
+        if (currentIndex > 0) {
+            setCurrentIndex(prev => prev - 1);
+        }
+    };
+
+    const handleCardClick = (e) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+
+        // If language is AR (RTL), left side is Next and right side is Previous?
+        // Actually, "Previous" is usually "Back" (Right arrow in RTL, Left arrow in LTR for history, 
+        // but typically "Next" advances forward). 
+        // User request: "left half it takes you to previous question and if you press on right half it takes you to next question"
+        // I will follow the explicit instruction regardless of RTL for now, or should I flip it for RTL?
+        // "like instagram stories" -> tap right to go forward, tap left to go back. This is universal in Stories UI.
+        // I will stick to: Left -> Prev, Right -> Next.
+
+        if (x < rect.width / 2) {
+            handlePrevious();
+        } else {
+            handleNext();
+        }
+    };
+
     const handleReplay = () => {
         setLoading(true);
         setCurrentIndex(0);
@@ -147,7 +172,7 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
             </div>
 
             {/* Card Area */}
-            <div className="card-area" onClick={handleNext}>
+            <div className="card-area" onClick={handleCardClick}>
                 <QuestionCard
                     question={currentQuestion}
                     lang={lang}
@@ -159,11 +184,7 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
             <div className="game-controls">
                 <ActionButton
                     label={lang === 'en' ? 'Back' : 'اللي فات'}
-                    onClick={() => {
-                        setTimeout(() => {
-                            if (currentIndex > 0) setCurrentIndex(prev => prev - 1)
-                        }, 150);
-                    }}
+                    onClick={() => setTimeout(handlePrevious, 150)}
                 />
                 <ActionButton
                     label={lang === 'en' ? 'Next' : 'التالي'}
