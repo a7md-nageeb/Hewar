@@ -174,7 +174,12 @@ body {
     width: 100%;
 }
 
-[dir="rtl"] {
+html[dir="rtl"],
+html[dir="rtl"] body,
+html[dir="rtl"] button,
+html[dir="rtl"] input,
+html[dir="rtl"] textarea,
+html[dir="rtl"] select {
     font-family: var(--font-ar);
 }
 
