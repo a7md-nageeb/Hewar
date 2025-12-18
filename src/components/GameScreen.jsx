@@ -1,24 +1,83 @@
 import React, { useState, useEffect } from 'react';
 import QuestionCard from './QuestionCard';
 import { questions, categories } from '../data/questions';
+import { saveSession, getRecentHistory, updateUsageCounts, getUsageCounts } from '../utils/sessionManager';
 
-const getRandomQuestions = (category, genre, count = 10) => {
-    let filtered;
+const generateDeck = (category, genre, count = 10) => {
+    // 1. Get Usage Counts & History
+    const recentIds = getRecentHistory(3);
+    const usageCounts = getUsageCounts();
+
+    const getUsage = (id) => usageCounts[id] || 0;
+
+    // Helper: Shuffle
+    const shuffle = (array) => {
+        const arr = [...array];
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    };
+
+    // 2. Candidate Selection
+    let candidates;
     if (genre === 'Random') {
-        // Get all questions compatible with this category
-        filtered = questions.filter(q => q.category.includes(category));
+        candidates = questions.filter(q => q.category.includes(category));
     } else {
-        filtered = questions.filter(q => q.category.includes(category) && q.genre === genre);
+        candidates = questions.filter(q => q.category.includes(category) && q.genre === genre);
     }
 
-    // Shuffle array using Fisher-Yates algorithm
-    for (let i = filtered.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [filtered[i], filtered[j]] = [filtered[j], filtered[i]];
+    // 3. Filter History
+    // Attempt to exclude recent questions. If that leaves us with too few, we might have to relax it.
+    let available = candidates.filter(q => !recentIds.has(q.id));
+
+    // Fallback: If pool is too small (< count), try to add back history
+    if (available.length < count) {
+        // Add back everything from candidates that was filtered
+        const missing = candidates.filter(q => recentIds.has(q.id));
+        available = [...available, ...missing];
+
+        // If STILL small, inject from 'Random' or 'What If'
+        if (available.length < count) {
+            const fillers = questions.filter(q =>
+                (q.genre === 'What If' || q.genre === 'Funny') &&
+                !available.some(existing => existing.id === q.id)
+            );
+            // Shuffle fillers and add enough to meet count
+            available = [...available, ...shuffle(fillers).slice(0, count - available.length)];
+        }
     }
 
-    // Return limited count
-    return filtered.slice(0, count);
+    // 4. Sort by Usage Count (Ascending)
+    // We shuffle first to ensure random order among equal usage counts
+    available = shuffle(available);
+    available.sort((a, b) => getUsage(a.id) - getUsage(b.id));
+
+    // 5. Select Initial Pool of (count * 1.5) or similar for Light check
+    // We take a slightly larger set to find Light questions in
+    let workingSet = available.slice(0, Math.max(count, 20));
+
+    // 6. Apply "3 Light First" Rule
+
+    const lightQuestions = workingSet.filter(q => q.intensity === 'Light');
+    const otherQuestions = workingSet.filter(q => q.intensity !== 'Light');
+
+    // Pick top 3 Light
+    const startSet = lightQuestions.slice(0, 3);
+
+    // Remaining for pool
+    const unusedLight = lightQuestions.slice(3);
+    const mixedPool = [...unusedLight, ...otherQuestions];
+
+    // Shuffle the rest
+    const shuffledPool = shuffle(mixedPool);
+
+    // Fill deck
+    const needed = count - startSet.length;
+    const finalDeck = [...startSet, ...shuffledPool.slice(0, needed)];
+
+    return finalDeck;
 };
 
 const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
@@ -30,8 +89,12 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
     const [showExitConfirm, setShowExitConfirm] = useState(false);
 
     useEffect(() => {
-        const newDeck = getRandomQuestions(category, genre, 10);
+        const newDeck = generateDeck(category, genre, 10);
         setDeck(newDeck);
+
+        // Save session immediately
+        const ids = newDeck.map(q => q.id);
+        saveSession(ids);
 
         setLoading(false);
     }, [category, genre]);
@@ -54,14 +117,7 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
         const rect = e.currentTarget.getBoundingClientRect();
         const x = e.clientX - rect.left;
 
-        // If language is AR (RTL), left side is Next and right side is Previous?
-        // Actually, "Previous" is usually "Back" (Right arrow in RTL, Left arrow in LTR for history, 
-        // but typically "Next" advances forward). 
-        // User request: "left half it takes you to previous question and if you press on right half it takes you to next question"
-        // I will follow the explicit instruction regardless of RTL for now, or should I flip it for RTL?
-        // "like instagram stories" -> tap right to go forward, tap left to go back. This is universal in Stories UI.
-        // I will stick to: Left -> Prev, Right -> Next.
-
+        // Left -> Prev, Right -> Next
         if (x < rect.width / 2) {
             handlePrevious();
         } else {
@@ -73,8 +129,13 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
         setLoading(true);
         setCurrentIndex(0);
         setGameOver(false);
-        const newDeck = getRandomQuestions(category, genre, 10);
+        const newDeck = generateDeck(category, genre, 10);
         setDeck(newDeck);
+
+        // Track the replay session too
+        const ids = newDeck.map(q => q.id);
+        saveSession(ids);
+
         setLoading(false);
     };
 

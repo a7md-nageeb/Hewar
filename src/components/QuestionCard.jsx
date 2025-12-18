@@ -104,7 +104,7 @@ const QuestionCard = ({ question, lang, onNext }) => {
                         fontFamily: lang === 'ar' ? 'var(--font-ar)' : 'var(--font-en)',
                         textAlign: lang === 'ar' ? 'right' : 'left'
                     }}>
-                        {lang === 'ar' ? question.text_ar : question.text_en}
+                        {lang === 'ar' ? (question.text_ar || question.text_en) : question.text_en}
                     </h2>
                 </div>
 
