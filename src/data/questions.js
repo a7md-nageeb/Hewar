@@ -1,11 +1,53 @@
 
 export const categories = [
-    { id: 'Friends', label_en: 'Friends', label_ar: 'صحاب', color: 'var(--ocean-500)' },
-    { id: 'Lovers', label_en: 'Lovers', label_ar: 'مرتبطين', color: 'var(--rose-600)' },
-    { id: 'Family', label_en: 'Family', label_ar: 'عيلة', color: 'var(--orange-500)' },
-    { id: 'Coworkers', label_en: 'Coworkers', label_ar: 'صحاب شغل', color: 'var(--accent-500)' },
-    { id: 'First Date', label_en: 'First Date', label_ar: 'أول ديت', color: 'var(--rose-500)' },
-    { id: 'First Time Meeting', label_en: 'First Time Meeting', label_ar: 'أول مرة نتقابل', color: 'var(--lilac-500)' },
+    {
+        id: 'Friends',
+        label_en: 'Friends',
+        label_ar: 'صحاب',
+        color: 'var(--ocean-500)',
+        description_en: 'Have fun, laugh, and learn more about your friends',
+        description_ar: 'انبسطوا، اضحكوا، واعرفوا صحابكم أكتر'
+    },
+    {
+        id: 'Lovers',
+        label_en: 'In a Relationship',
+        label_ar: 'مرتبطين',
+        color: 'var(--rose-600)',
+        description_en: 'Discover new things about each other',
+        description_ar: 'اكتشفوا حاجات جديدة عن بعض وقووا علاقتكم'
+    },
+    {
+        id: 'Family',
+        label_en: 'Family',
+        label_ar: 'عيلة',
+        color: 'var(--orange-500)',
+        description_en: 'Share meaningful or funny moments with family',
+        description_ar: 'شاركوا لحظات حلوة أو مضحكة مع العيلة'
+    },
+    {
+        id: 'Coworkers',
+        label_en: 'Coworkers',
+        label_ar: 'صحاب شغل',
+        color: 'var(--accent-500)',
+        description_en: 'Play light questions to bond with colleagues',
+        description_ar: 'أسئلة خفيفة ولطيفة لتقوية العلاقة مع زملاء الشغل'
+    },
+    {
+        id: 'First Date',
+        label_en: 'First Date',
+        label_ar: 'أول ديت',
+        color: 'var(--rose-500)',
+        description_en: 'Break the ice and get to know each other in a fun way',
+        description_ar: 'اكسروا الجليد واعرفوا بعض بطريقة لذيذة'
+    },
+    {
+        id: 'First Time Meeting',
+        label_en: 'First Time Meeting',
+        label_ar: 'أول مرة نتقابل',
+        color: 'var(--lilac-500)',
+        description_en: 'Break the ice and start a conversation with new people',
+        description_ar: 'افتحوا مواضيع وكلام مع ناس بتشوفوهم لأول مرة'
+    },
 ];
 
 export const genres = [

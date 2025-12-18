@@ -108,8 +108,18 @@ const SelectionScreen = ({ lang, onStart, onBack }) => {
                                 /* Maintaining layout/size constraints as requested */
                             }}
                         >
-                            {isRandom && <img src="assets/icons/random.svg" alt="" style={{ width: '24px', height: '24px', filter: 'invert(1)' }} />}
-                            {isRandom ? (lang === 'en' ? 'Surprise Me' : 'فاجئني') : (lang === 'en' ? item.label_en : item.label_ar)}
+                            <div className="selection-content">
+                                {isRandom && <img src="assets/icons/random.svg" alt="" style={{ width: '24px', height: '24px', filter: 'invert(1)', marginBottom: '8px' }} />}
+                                <div className="selection-label">
+                                    {isRandom ? (lang === 'en' ? 'Surprise Me' : 'فاجئني') : (lang === 'en' ? item.label_en : item.label_ar)}
+                                </div>
+                                {/* Description removed for now */}
+                                {/* {!isRandom && step === 1 && (
+                                    <div className="selection-description">
+                                        {lang === 'en' ? item.description_en : item.description_ar}
+                                    </div>
+                                )} */}
+                            </div>
                         </button>
                     );
                 })}
