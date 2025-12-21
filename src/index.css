@@ -270,7 +270,7 @@ button:active {
     color: var(--color-text-primary);
     /* Safe Area Insets for modern mobile */
     padding-top: env(safe-area-inset-top);
-    padding-bottom: env(safe-area-inset-bottom);
+    /* Removed padding-bottom to allow full-screen backgrounds; children handle safe area */
 }
 
 /* --- Home Screen Layout (Revamp) --- */
@@ -399,7 +399,8 @@ button:active {
 
 .home-content-container {
     /* Remove top padding to hug text */
-    padding: 0 1rem 1rem 1rem;
+    /* Bottom padding: 32px + safe area to pin button */
+    padding: 0 1rem calc(32px + env(safe-area-inset-bottom)) 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
