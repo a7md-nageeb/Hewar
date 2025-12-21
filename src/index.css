@@ -827,7 +827,7 @@ button:active {
 
 .action-btn {
     flex: 1;
-    height: 60px;
+    height: 80px;
     border-radius: 20px;
     font-size: 1.2rem;
     font-weight: 800;
@@ -866,6 +866,14 @@ button:active {
     background: var(--white);
     color: var(--ocean-900);
     border: none;
+    /* Match primary button typography */
+    text-align: center;
+    font-feature-settings: 'liga' off, 'clig' off;
+    font-family: 'Nunito', sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 48px;
 }
 
 /* --- Question Card --- */
