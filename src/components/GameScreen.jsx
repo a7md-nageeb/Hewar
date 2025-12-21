@@ -213,12 +213,7 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
                     </svg>
                 </button>
 
-                <div className="game-subtitle">
-                    {lang === 'ar'
-                        ? categories.find(c => c.id === category)?.label_ar || category
-                        : `${category} Pack`
-                    }
-                </div>
+                <div className="game-subtitle"></div>
 
                 <div style={{ width: '40px' }}></div> {/* Spacer to center title */}
             </div>
