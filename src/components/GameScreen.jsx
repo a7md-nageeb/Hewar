@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import QuestionCard from './QuestionCard';
 import { questions, categories, genres } from '../data/questions';
 import { saveSession, getRecentHistory, updateUsageCounts, getUsageCounts } from '../utils/sessionManager';
@@ -85,6 +86,7 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [loading, setLoading] = useState(true);
     const [gameOver, setGameOver] = useState(false);
+    const [direction, setDirection] = useState(0); // 1 = Next (slide left), -1 = Previous (slide right)
 
     const [showExitConfirm, setShowExitConfirm] = useState(false);
 
@@ -101,6 +103,7 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
 
     const handleNext = () => {
         if (currentIndex < deck.length - 1) {
+            setDirection(1);
             setCurrentIndex(prev => prev + 1);
         } else {
             setGameOver(true);
@@ -109,6 +112,7 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
 
     const handlePrevious = () => {
         if (currentIndex > 0) {
+            setDirection(-1);
             setCurrentIndex(prev => prev - 1);
         }
     };
@@ -236,11 +240,27 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
 
             {/* Card Area */}
             <div className="card-area" onClick={handleCardClick}>
-                <QuestionCard
-                    question={currentQuestion}
-                    lang={lang}
-                    onNext={handleNext}
-                />
+                <AnimatePresence initial={false} mode="popLayout" custom={direction}>
+                    <motion.div
+                        key={currentIndex}
+                        custom={direction}
+                        initial={{ x: direction > 0 ? 340 : -340, opacity: 0, scale: 0.9 }}
+                        animate={{ x: 0, opacity: 1, scale: 1 }}
+                        exit={{ x: direction > 0 ? -340 : 340, opacity: 0, scale: 0.9 }}
+                        transition={{
+                            x: { type: "spring", stiffness: 150, damping: 20 },
+                            opacity: { duration: 0.4 },
+                            scale: { duration: 0.4 }
+                        }}
+                        style={{ width: '100%', height: '100%', cursor: 'pointer' }}
+                    >
+                        <QuestionCard
+                            question={currentQuestion}
+                            lang={lang}
+                            onNext={handleNext}
+                        />
+                    </motion.div>
+                </AnimatePresence>
             </div>
 
             {/* Bottom Controls */}
