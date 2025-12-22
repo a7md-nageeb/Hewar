@@ -244,9 +244,26 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
                     <motion.div
                         key={currentIndex}
                         custom={direction}
-                        initial={{ x: direction > 0 ? 340 : -340, opacity: 0, scale: 0.9 }}
-                        animate={{ x: 0, opacity: 1, scale: 1 }}
-                        exit={{ x: direction > 0 ? -340 : 340, opacity: 0, scale: 0.9 }}
+                        variants={{
+                            enter: (direction) => ({
+                                x: direction > 0 ? 340 : -340,
+                                opacity: 0,
+                                scale: 0.9
+                            }),
+                            center: {
+                                x: 0,
+                                opacity: 1,
+                                scale: 1
+                            },
+                            exit: (direction) => ({
+                                x: direction > 0 ? -340 : 340,
+                                opacity: 0,
+                                scale: 0.9
+                            })
+                        }}
+                        initial="enter"
+                        animate="center"
+                        exit="exit"
                         transition={{
                             x: { type: "spring", stiffness: 150, damping: 20 },
                             opacity: { duration: 0.4 },
