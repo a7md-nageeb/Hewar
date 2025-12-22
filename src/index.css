@@ -766,17 +766,15 @@ button:active {
 }
 
 .game-top-bar {
-    padding: 0 0 1rem 0;
+    padding: 1rem 0 1rem 0;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     z-index: 10;
     position: relative;
 }
 
 .game-back-btn {
-    position: absolute;
-    left: 0;
     width: 40px;
     height: 40px;
     padding: 0;
@@ -795,7 +793,7 @@ button:active {
 }
 
 .game-subtitle {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 800;
     color: var(--ocean-900);
 }

@@ -182,9 +182,10 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
     const genreObj = genres.find(g => g.id === genre);
     const categoryLabel = lang === 'en' ? categoryObj?.label_en : categoryObj?.label_ar;
     const genreLabel = lang === 'en' ? genreObj?.label_en : genreObj?.label_ar;
+    const packSuffix = lang === 'en' ? 'Pack' : 'باقة';
     const packTitle = genre === 'Random'
-        ? categoryLabel
-        : `${genreLabel} ${categoryLabel}`;
+        ? `${categoryLabel} ${packSuffix}`
+        : `${genreLabel} ${categoryLabel} ${packSuffix}`;
 
     // If no questions found (empty deck)
     if (!currentQuestion) {
@@ -222,8 +223,6 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
                         <path d="M3 19.428V4.57217C3 4.07767 3.45211 3.66675 3.99617 3.66675C4.54789 3.66675 5 4.07767 5 4.57217V19.428C5 19.9295 4.54789 20.3334 3.99617 20.3334C3.45211 20.3334 3 19.9295 3 19.428Z" fill="currentColor" />
                     </svg>
                 </button>
-
-                <div className="game-subtitle">{packTitle}</div>
             </div>
 
             {/* Progress Dots / Bar */}
