@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import QuestionCard from './QuestionCard';
-import { questions, categories } from '../data/questions';
+import { questions, categories, genres } from '../data/questions';
 import { saveSession, getRecentHistory, updateUsageCounts, getUsageCounts } from '../utils/sessionManager';
 
 const generateDeck = (category, genre, count = 10) => {
@@ -176,6 +176,16 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
     }
 
     const currentQuestion = deck[currentIndex];
+
+    // Get category and genre labels for display
+    const categoryObj = categories.find(c => c.id === category);
+    const genreObj = genres.find(g => g.id === genre);
+    const categoryLabel = lang === 'en' ? categoryObj?.label_en : categoryObj?.label_ar;
+    const genreLabel = lang === 'en' ? genreObj?.label_en : genreObj?.label_ar;
+    const packTitle = genre === 'Random'
+        ? categoryLabel
+        : `${genreLabel} ${categoryLabel}`;
+
     // If no questions found (empty deck)
     if (!currentQuestion) {
         return (
@@ -213,9 +223,7 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
                     </svg>
                 </button>
 
-                <div className="game-subtitle"></div>
-
-                <div style={{ width: '40px' }}></div> {/* Spacer to center title */}
+                <div className="game-subtitle">{packTitle}</div>
             </div>
 
             {/* Progress Dots / Bar */}

@@ -358,11 +358,14 @@ button:active {
 }
 
 .hero-img {
-    width: 100%;
-    max-width: 382px;
+    width: 120%;
     height: auto;
     object-fit: contain;
-    animation: heroSlideUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    /* Start in down position */
+    opacity: 0;
+    transform: translateY(150px);
+    /* Start immediately with clouds, slower with ease-in for gentle start */
+    animation: heroSlideUp 2.2s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards;
 }
 
 .home-bottom-section {
@@ -378,13 +381,14 @@ button:active {
     /* Reduced overlap to show more image */
     margin-top: -35px;
     padding-bottom: 0;
-    animation: cloudsSlideDown 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    /* Ease-in-out: slow start, slow end for gentle settling */
+    animation: cloudsSlideDown 2.5s cubic-bezier(0.42, 0, 0.58, 1) forwards;
 }
 
 .clouds-divider {
     width: 100%;
     line-height: 0;
-    transform: translateY(-98%);
+    transform: translateY(-90%);
     position: absolute;
     top: 5rem;
     left: 0;
@@ -399,8 +403,8 @@ button:active {
 
 .home-content-container {
     /* Remove top padding to hug text */
-    /* Bottom padding: 32px + safe area to pin button */
-    padding: 0 1rem calc(32px + env(safe-area-inset-bottom)) 1rem;
+    /* Bottom padding: 48px + safe area to pin button */
+    padding: 0 2rem calc(48px + env(safe-area-inset-bottom)) 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -414,8 +418,8 @@ button:active {
 
     /* Animation - Start invisible */
     opacity: 0;
-    /* Delay to start AFTER clouds move */
-    animation: contentFadeIn 0.8s ease-out 1s forwards;
+    /* Appear AFTER clouds finish settling (2.5s + small buffer) */
+    animation: contentFadeIn 0.8s ease-out 2.6s forwards;
 }
 
 .app-title-large {
@@ -468,7 +472,7 @@ button:active {
 
 .home-cta-wrapper {
     width: 100%;
-    max-width: 320px;
+    max-width: 350px;
 }
 
 .cta-btn-large {
@@ -764,12 +768,15 @@ button:active {
 .game-top-bar {
     padding: 0 0 1rem 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     z-index: 10;
+    position: relative;
 }
 
 .game-back-btn {
+    position: absolute;
+    left: 0;
     width: 40px;
     height: 40px;
     padding: 0;
@@ -1321,7 +1328,8 @@ button:active {
 
     to {
         margin-top: -35px;
-        min-height: 50vh;
+        min-height: 0;
+        /* Allow hugging content */
     }
 }
 
