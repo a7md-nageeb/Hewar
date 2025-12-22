@@ -252,13 +252,13 @@ button:active {
     border: none;
     border-radius: 16px;
     box-shadow: none;
-    color: var(--ocean-900);
+    color: var(--ocean-300);
     transition: background-color 0.2s ease, transform 0.1s ease;
     cursor: pointer;
 }
 
 .btn-tertiary:active {
-    background: var(--charcoal-200);
+    background: var(--ocean-100);
     transform: scale(0.96);
 }
 
@@ -584,8 +584,8 @@ button:active {
     justify-content: center;
     font-size: 1.5rem;
     padding: 0;
-    background-color: var(--charcoal-100);
-    color: var(--charcoal-700);
+    background-color: var(--ocean-50);
+    color: var(--ocean-300);
 }
 
 .header-title {
@@ -629,6 +629,7 @@ button:active {
     word-break: break-word;
     width: 100%;
     /* Force width to respect parent grid cell */
+    color: var(--ocean-300);
 }
 
 .selection-content {
@@ -764,7 +765,7 @@ button:active {
 
 .end-btn-secondary {
     background: var(--white);
-    color: var(--ocean-900);
+    color: var(--ocean-300);
 }
 
 .game-top-bar {
@@ -784,13 +785,13 @@ button:active {
     align-items: center;
     justify-content: center;
     font-size: 1.2rem;
-    background-color: var(--charcoal-100);
-    color: var(--charcoal-700);
+    background-color: var(--ocean-50);
+    color: var(--ocean-300);
 }
 
 .game-back-btn:active {
     transform: scale(0.9);
-    background-color: var(--charcoal-200);
+    background-color: var(--ocean-100);
     border-radius: 50%;
 }
 
@@ -800,18 +801,69 @@ button:active {
     color: var(--ocean-900);
 }
 
-.progress-bar-container {
+/* --- Game Header (Redesigned) --- */
+.game-header {
     display: flex;
-    gap: 4px;
-    padding: 0;
-    margin-bottom: 24px;
+    align-items: center;
+    gap: 16px;
+    padding: 0.5rem 0 1rem 0;
+    width: 100%;
 }
 
-.progress-dot {
+.close-game-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: var(--ocean-300);
+    padding: 0;
+}
+
+.close-game-btn:active {
+    background: var(--ocean-50);
+    transform: scale(0.95);
+}
+
+.progress-track {
     flex: 1;
-    height: 4px;
-    border-radius: 2px;
-    transition: background 0.3s;
+    height: 14px;
+    background: var(--ocean-100);
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    /* Optional: Inner shadow for depth? Figma usually flat. Keeping flat. */
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--ocean-400);
+    /* Duolingo uses bright green usually, matching Ocean theme here */
+    border-radius: 20px;
+    transition: width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* Nice springy fill */
+}
+
+.question-counter {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--ocean-300);
+    /* Muted counter */
+    font-feature-settings: 'tnum' on, 'lnum' on;
+    /* Tabular numbers if font supports */
+    white-space: nowrap;
+}
+
+.current-num {
+    color: var(--ocean-300);
+    /* Highlight current */
+    padding-right: 4px;
+}
+
+.total-num {
+    color: var(--ocean-300);
 }
 
 .card-area {
@@ -872,7 +924,7 @@ button:active {
 
 .action-btn-secondary {
     background: var(--white);
-    color: var(--ocean-900);
+    color: var(--ocean-300);
     border: none;
     /* Match primary button typography */
     text-align: center;
@@ -981,7 +1033,7 @@ button:active {
     border: none;
     font-size: 2rem;
     line-height: 1;
-    color: var(--ocean-500);
+    color: var(--ocean-300);
     cursor: pointer;
     padding: 0;
 }

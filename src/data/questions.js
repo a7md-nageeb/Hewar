@@ -172,14 +172,7 @@ export const questions = [
         genre: 'Awkward',
         intensity: 'Bold'
     },
-    {
-        id: 'f15',
-        text_en: "What if you had to pitch our friendship/relationship like a product — how would you describe it?",
-        text_ar: "لو هتعمل إعلان عن علاقتنا/صداقتنا زي المنتج، هتوصفها إزاي؟",
-        category: ['Coworkers', 'Friends', 'Lovers'],
-        genre: 'What If',
-        intensity: 'Light'
-    },
+
     {
         id: 'f16',
         text_en: "What if we swapped lives for a week — what would shock you the most?",
