@@ -390,7 +390,7 @@ button:active {
 .clouds-divider {
     width: 100%;
     line-height: 0;
-    transform: translateY(-90%);
+    transform: translateY(-100%);
     position: absolute;
     top: 5rem;
     left: 0;
@@ -1365,7 +1365,7 @@ button:active {
     }
 
     to {
-        transform: translateY(0);
+        transform: translateY(-30px);
         opacity: 1;
     }
 }

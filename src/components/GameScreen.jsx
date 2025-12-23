@@ -82,24 +82,18 @@ const generateDeck = (category, genre, count = 10) => {
 };
 
 const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
-    const [deck, setDeck] = useState([]);
+    const [deck, setDeck] = useState(() => generateDeck(category, genre, 10));
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [loading, setLoading] = useState(true);
     const [gameOver, setGameOver] = useState(false);
     const [direction, setDirection] = useState(0); // 1 = Next (slide left), -1 = Previous (slide right)
 
     const [showExitConfirm, setShowExitConfirm] = useState(false);
 
     useEffect(() => {
-        const newDeck = generateDeck(category, genre, 10);
-        setDeck(newDeck);
-
-        // Save session immediately
-        const ids = newDeck.map(q => q.id);
+        // Save session whenever deck changes (mount & replay)
+        const ids = deck.map(q => q.id);
         saveSession(ids);
-
-        setLoading(false);
-    }, [category, genre]);
+    }, [deck]);
 
     const handleNext = () => {
         if (currentIndex < deck.length - 1) {
@@ -130,20 +124,13 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
     };
 
     const handleReplay = () => {
-        setLoading(true);
         setCurrentIndex(0);
         setGameOver(false);
         const newDeck = generateDeck(category, genre, 10);
         setDeck(newDeck);
-
-        // Track the replay session too
-        const ids = newDeck.map(q => q.id);
-        saveSession(ids);
-
-        setLoading(false);
     };
 
-    if (loading) return <div className="fs-loading">Loading...</div>;
+    // Loading check removed
 
     if (gameOver) {
         return (

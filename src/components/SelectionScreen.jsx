@@ -4,7 +4,6 @@ import { categories, genres } from '../data/questions';
 const SelectionScreen = ({ lang, onStart, onBack }) => {
     const [step, setStep] = useState(1); // 1 = Category, 2 = Genre
     const [selectedCategory, setSelectedCategory] = useState(null);
-    const [isLoading, setIsLoading] = useState(false);
 
     // Compatibility Logic
     const getCompatibleGenres = (categoryId) => {
@@ -27,11 +26,7 @@ const SelectionScreen = ({ lang, onStart, onBack }) => {
     };
 
     const handleGenreSelect = (genreId) => {
-        setIsLoading(true);
-        setTimeout(() => {
-            setIsLoading(false);
-            onStart(selectedCategory, genreId);
-        }, 800); // Reduced friction
+        onStart(selectedCategory, genreId);
     };
 
     const renderHeader = () => {
@@ -62,16 +57,6 @@ const SelectionScreen = ({ lang, onStart, onBack }) => {
 
     return (
         <div className="selection-screen">
-            {isLoading && (
-                <div className="loading-overlay">
-                    <div className="loading-content">
-                        <div className="spinner"></div>
-                        <p className="loading-text">
-                            {lang === 'en' ? "Generating session..." : "جاري تحضير الجلسة..."}
-                        </p>
-                    </div>
-                </div>
-            )}
 
             {/* Header */}
             <div className="selection-header">
