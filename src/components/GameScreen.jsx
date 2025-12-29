@@ -114,12 +114,26 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
     const handleCardClick = (e) => {
         const rect = e.currentTarget.getBoundingClientRect();
         const x = e.clientX - rect.left;
+        const isRTL = lang === 'ar';
 
-        // Left -> Prev, Right -> Next
+        // Logic:
+        // LTR: Left -> Prev, Right -> Next
+        // RTL: Left -> Next, Right -> Prev (Swapped)
+
         if (x < rect.width / 2) {
-            handlePrevious();
+            // Left Side Click
+            if (isRTL) {
+                handleNext();
+            } else {
+                handlePrevious();
+            }
         } else {
-            handleNext();
+            // Right Side Click
+            if (isRTL) {
+                handlePrevious();
+            } else {
+                handleNext();
+            }
         }
     };
 
@@ -132,35 +146,91 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
 
     // Loading check removed
 
+    const handleShareGame = async () => {
+        const shareData = {
+            title: 'Hewar',
+            text: 'Check out this game for deep questions!',
+            url: window.location.href
+        };
+
+        if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
+            try {
+                await navigator.share(shareData);
+            } catch (err) {
+                console.log('Share canceled', err);
+            }
+        } else {
+            // Fallback: Copy to clipboard
+            try {
+                await navigator.clipboard.writeText(window.location.href);
+                alert(lang === 'en' ? 'Link copied to clipboard!' : 'تم نسخ الرابط!');
+            } catch (err) {
+                console.error('Failed to copy', err);
+            }
+        }
+    };
+
     if (gameOver) {
         return (
-            <div className="game-end-screen">
-                <div className="logo-container">
-                    <img src="logo.png" alt="Logo" className="logo-img" />
+            <div className="session-complete-screen">
+                <div className="pattern-overlay" />
+
+                <div className="session-content">
+                    {/* Cloud Logo */}
+                    <img src="assets/logo-cloud.svg" alt="Hewar Logo" className="session-complete-logo" />
+
+                    <h1 className="session-title">
+                        {lang === 'en' ? 'All Done!' : 'خلصت الجولة!'}
+                    </h1>
                 </div>
-                <h1 className="end-title">
-                    {lang === 'en' ? 'Session Complete!' : 'خلصت الجولة!'}
-                </h1>
-                <p className="end-subtitle">
-                    {lang === 'en' ? 'Hope you got to know each other better.' : 'يارب تكونوا عرفتوا بعض أكتر.'}
-                </p>
 
-                <div className="end-controls">
-                    <button
-                        onClick={() => setTimeout(handleReplay, 150)}
-                        className="btn-3d end-btn end-btn-primary"
-                    >
-                        {lang === 'en' ? 'Play Again' : 'العب تاني'}
-                        <img src="assets/icons/replay.svg" alt="Replay" style={{ width: '24px', height: '24px', filter: 'invert(1)' }} />
+                {/* Bottom Buttons Container (48px from bottom handled by padding in CSS) */}
+                <div className="session-bottom-container">
+                    {/* Share Button (Tertiary) */}
+                    <button onClick={handleShareGame} className="btn-tertiary-share">
+                        <div
+                            className="icon-masked"
+                            style={{
+                                backgroundColor: 'var(--ocean-300)',
+                                WebkitMaskImage: `url(assets/icons/share-icon.svg)`,
+                                maskImage: `url(assets/icons/share-icon.svg)`
+                            }}
+                        />
+                        {lang === 'en' ? 'Share Game with Friends' : 'شارك اللعبة مع صحابك'}
                     </button>
 
-                    <button
-                        onClick={() => setTimeout(onHome, 150)}
-                        className="btn-3d end-btn end-btn-secondary"
-                    >
-                        {lang === 'en' ? 'Back to Home' : 'القائمة الرئيسية'}
-                        <img src="assets/icons/home.svg" alt="Home" style={{ width: '24px', height: '24px' }} />
-                    </button>
+                    <div className="session-buttons">
+                        <button
+                            onClick={() => setTimeout(handleReplay, 150)}
+                            className="btn-3d action-btn-primary cta-btn-large"
+                            style={{ gap: '12px' }}
+                        >
+                            <img
+                                src="assets/icons/replay.svg"
+                                alt="Replay"
+                                style={{ width: '32px', height: '32px', filter: 'invert(1)' }}
+                            />
+                            {lang === 'en' ? 'Play Again' : 'العب تاني'}
+                        </button>
+
+                        <button
+                            onClick={() => setTimeout(onHome, 150)}
+                            className="btn-3d action-btn action-btn-secondary"
+                            style={{ width: '100%', justifyContent: 'center', gap: '12px' }}
+                        >
+                            <div
+                                className="icon-masked"
+                                style={{
+                                    width: '32px',
+                                    height: '32px',
+                                    backgroundColor: 'var(--ocean-300)',
+                                    WebkitMaskImage: `url(assets/icons/home.svg)`,
+                                    maskImage: `url(assets/icons/home.svg)`
+                                }}
+                            />
+                            {lang === 'en' ? 'Back to Home' : 'القائمة الرئيسية'}
+                        </button>
+                    </div>
                 </div>
             </div>
         )
@@ -224,21 +294,33 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
                         key={currentIndex}
                         custom={direction}
                         variants={{
-                            enter: (direction) => ({
-                                x: direction > 0 ? 340 : -340,
-                                opacity: 0,
-                                scale: 0.9
-                            }),
+                            enter: (direction) => {
+                                const isRTL = lang === 'ar';
+                                // Normal: dir > 0 (Next) -> enter from right (positive x)
+                                // RTL: dir > 0 (Next) -> enter from left (negative x)
+                                const xVal = isRTL ? (direction > 0 ? -340 : 340) : (direction > 0 ? 340 : -340);
+                                return {
+                                    x: xVal,
+                                    opacity: 0,
+                                    scale: 0.9
+                                };
+                            },
                             center: {
                                 x: 0,
                                 opacity: 1,
                                 scale: 1
                             },
-                            exit: (direction) => ({
-                                x: direction > 0 ? -340 : 340,
-                                opacity: 0,
-                                scale: 0.9
-                            })
+                            exit: (direction) => {
+                                const isRTL = lang === 'ar';
+                                // Normal: dir > 0 (Next) -> exit to left (negative x)
+                                // RTL: dir > 0 (Next) -> exit to right (positive x)
+                                const xVal = isRTL ? (direction > 0 ? 340 : -340) : (direction > 0 ? -340 : 340);
+                                return {
+                                    x: xVal,
+                                    opacity: 0,
+                                    scale: 0.9
+                                };
+                            }
                         }}
                         initial="enter"
                         animate="center"
