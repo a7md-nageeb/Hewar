@@ -293,7 +293,7 @@ button:active {
     align-items: center;
     padding-top: 1rem;
     position: relative;
-    z-index: 1;
+    /* Removed z-index: 1 to allow button to pop out */
     /* Create space for the image to be 80% visible */
     /* Pushing bottom section down by growing */
     flex: 1;
@@ -329,6 +329,9 @@ button:active {
     font-weight: 700;
     cursor: pointer;
     transition: all 0.2s ease;
+    /* Fix for mobile clickability */
+    position: relative;
+    z-index: 50;
 }
 
 .lang-pill-btn:active {
