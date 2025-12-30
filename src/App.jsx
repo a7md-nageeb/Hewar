@@ -57,7 +57,7 @@ function App() {
                     category={gameConfig.category}
                     genre={gameConfig.genre}
                     onBack={handleBack}
-                    onHome={() => setView('selection')}
+                    onHome={() => setView('language')}
                 />
             )}
         </div>
