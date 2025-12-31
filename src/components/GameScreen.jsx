@@ -354,24 +354,51 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
                 />
             </div>
 
-            {/* Exit Confirmation Modal */}
-            {showExitConfirm && (
-                <div className="modal-overlay" onClick={() => setShowExitConfirm(false)}>
-                    <div className="modal-content" onClick={e => e.stopPropagation()}>
-                        <h3 className="modal-title">
-                            {lang === 'en' ? 'Are you sure you want to end the session?' : 'متأكد إنك عايز تنهي الجولة؟'}
-                        </h3>
-                        <div className="modal-buttons">
-                            <button className="btn-modal btn-cancel" onClick={() => setShowExitConfirm(false)}>
-                                {lang === 'en' ? 'Cancel' : 'إلغاء'}
-                            </button>
-                            <button className="btn-modal btn-danger" onClick={onBack}>
-                                {lang === 'en' ? 'End Session' : 'انهي الجولة'}
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            )}
+            {/* Exit Confirmation Bottom Sheet */}
+            <AnimatePresence>
+                {showExitConfirm && (
+                    <motion.div
+                        className="bottom-sheet-overlay"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        onClick={() => setShowExitConfirm(false)}
+                    >
+                        <motion.div
+                            className="bottom-sheet-content"
+                            onClick={e => e.stopPropagation()}
+                            initial={{ y: "100%" }}
+                            animate={{ y: 0 }}
+                            exit={{ y: "100%" }}
+                            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                            drag="y"
+                            dragConstraints={{ top: 0 }}
+                            dragElastic={0.2}
+                            onDragEnd={(e, { offset, velocity }) => {
+                                if (offset.y > 100 || velocity.y > 100) {
+                                    setShowExitConfirm(false);
+                                }
+                            }}
+                        >
+                            <div className="sheet-handle" />
+                            <div className="end-session-sheet">
+                                <img src="assets/angry-character.svg" alt="" className="end-session-img" />
+                                <h3 className="end-session-title">
+                                    {lang === 'en' ? 'Are you sure you want to end this session?' : 'متأكد إنك عايز تنهي الجولة؟'}
+                                </h3>
+                                <div className="end-session-buttons">
+                                    <button className="btn-3d action-btn action-btn-danger" onClick={onBack}>
+                                        {lang === 'en' ? 'End Session' : 'انهي الجولة'}
+                                    </button>
+                                    <button className="btn-3d action-btn action-btn-secondary" onClick={() => setShowExitConfirm(false)}>
+                                        {lang === 'en' ? 'Cancel' : 'إلغاء'}
+                                    </button>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 };
