@@ -370,7 +370,7 @@ button:active {
     opacity: 0;
     transform: translateY(150px);
     /* Start immediately with clouds, slower with ease-in for gentle start */
-    animation: heroSlideUp 2.2s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards;
+    animation: heroSlideUp 2.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 .home-bottom-section {
