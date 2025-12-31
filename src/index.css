@@ -1339,7 +1339,6 @@ button:active {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    animation: fadeIn 0.3s ease;
     backdrop-filter: blur(2px);
 }
 
@@ -1350,7 +1349,6 @@ button:active {
     width: 100%;
     max-width: 600px;
     margin: 0 auto;
-    animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
 }
 
