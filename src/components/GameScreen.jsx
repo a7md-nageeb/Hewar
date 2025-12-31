@@ -208,7 +208,7 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
                             <img
                                 src="assets/icons/replay.svg"
                                 alt="Replay"
-                                style={{ width: '32px', height: '32px', filter: 'invert(1)' }}
+                                style={{ width: '1.5rem', height: '1.5rem', filter: 'invert(1)' }}
                             />
                             {lang === 'en' ? 'Play Again' : 'العب تاني'}
                         </button>
@@ -221,8 +221,8 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
                             <div
                                 className="icon-masked"
                                 style={{
-                                    width: '32px',
-                                    height: '32px',
+                                    width: '1.5rem',
+                                    height: '1.5rem',
                                     backgroundColor: 'var(--ocean-300)',
                                     WebkitMaskImage: `url(assets/icons/home.svg)`,
                                     maskImage: `url(assets/icons/home.svg)`

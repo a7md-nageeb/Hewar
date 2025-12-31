@@ -491,10 +491,10 @@ button:active {
     text-align: center;
     font-feature-settings: 'liga' off, 'clig' off;
     font-family: var(--font-en);
-    font-size: 32px;
+    font-size: 1.5rem;
     font-style: normal;
     font-weight: 700;
-    line-height: 48px;
+    line-height: 2rem;
 }
 
 .cta-btn-large:active {
@@ -761,10 +761,10 @@ button:active {
     text-align: center;
     font-feature-settings: 'liga' off, 'clig' off;
     font-family: var(--font-en);
-    font-size: 32px;
+    font-size: 1.5rem;
     font-style: normal;
     font-weight: 700;
-    line-height: 48px;
+    line-height: 2rem;
 }
 
 .end-btn-secondary {
@@ -1039,10 +1039,10 @@ button:active {
     text-align: center;
     font-feature-settings: 'liga' off, 'clig' off;
     font-family: var(--font-en);
-    font-size: 32px;
+    font-size: 1.5rem;
     font-style: normal;
     font-weight: 700;
-    line-height: 48px;
+    line-height: 2rem;
 }
 
 .action-btn-primary:active {
@@ -1059,10 +1059,10 @@ button:active {
     text-align: center;
     font-feature-settings: 'liga' off, 'clig' off;
     font-family: var(--font-en);
-    font-size: 32px;
+    font-size: 1.5rem;
     font-style: normal;
     font-weight: 700;
-    line-height: 48px;
+    line-height: 2rem;
 }
 
 /* --- Question Card --- */
