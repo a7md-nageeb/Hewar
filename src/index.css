@@ -368,9 +368,10 @@ button:active {
     object-fit: contain;
     /* Start in down position */
     opacity: 0;
-    transform: translateY(150px);
-    /* Start immediately with clouds, slower with ease-in for gentle start */
-    animation: heroSlideUp 2.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    transform: translateY(90vh);
+    will-change: transform;
+    /* Smooth ease-out to start immediately and settle gently */
+    animation: heroSlideUp 2.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
 .home-bottom-section {
@@ -1488,7 +1489,7 @@ button:active {
 /* --- Intro Animations Keyframes --- */
 @keyframes heroSlideUp {
     from {
-        transform: translateY(150px);
+        transform: translateY(90vh);
         opacity: 0;
     }
 
