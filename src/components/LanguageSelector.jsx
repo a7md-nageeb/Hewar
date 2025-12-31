@@ -64,7 +64,7 @@ const LanguageSelector = ({ lang, onLanguageChange, onStart }) => {
                     <div className="home-cta-wrapper">
                         <button
                             onClick={() => setTimeout(onStart, 150)}
-                            className="btn-3d lang-btn action-btn-primary cta-btn-large"
+                            className="btn-3d lang-btn action-btn-primary cta-btn-large cta-btn-xl"
                         >
                             {lang === 'ar' ? 'يلا بينا' : "Let's Go"}
                         </button>

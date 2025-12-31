@@ -502,6 +502,11 @@ button:active {
     transform: translateY(4px);
 }
 
+.cta-btn-xl {
+    font-size: 2rem !important;
+    line-height: 3rem !important;
+}
+
 .app-title {
     font-size: 2.5rem;
     font-weight: 800;
