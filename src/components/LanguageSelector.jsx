@@ -33,7 +33,7 @@ const LanguageSelector = ({ lang, onLanguageChange, onStart }) => {
                 </div>
 
                 <div className="hero-container">
-                    <img src="assets/images/home_hero.png" alt="Card Game Illustration" className="hero-img" />
+                    <img src="assets/images/home_hero.png" alt="Card Game Illustration" className="hero-img-static" />
                 </div>
             </div>
 

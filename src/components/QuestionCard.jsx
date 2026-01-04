@@ -16,7 +16,8 @@ const QuestionCard = ({ question, lang, onNext }) => {
             case 'Honest': return { bg: 'var(--lime-50)', text: 'var(--lime-900)', accent: 'var(--lime-200)', img: `assets/vibes/${langPath}/honest.png` }; // Lime
             case 'Know me':
             case 'know me better': return { bg: 'var(--lilac-50)', text: 'var(--lilac-900)', accent: 'var(--lilac-200)', img: `assets/vibes/${langPath}/know_me.png` }; // Lilac
-            case 'What If': return { bg: 'var(--cyan-50)', text: 'var(--cyan-900)', accent: 'var(--cyan-200)', img: `assets/vibes/${langPath}/what_if.png` }; // Cyan
+            case 'What If':
+            case 'What If...': return { bg: 'var(--cyan-50)', text: 'var(--cyan-900)', accent: 'var(--cyan-200)', img: `assets/vibes/${langPath}/what_if.png` }; // Cyan
             default: return { bg: 'var(--green-50)', text: 'var(--green-900)', accent: 'var(--green-200)', img: null }; // Default
         }
     };

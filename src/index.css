@@ -362,16 +362,13 @@ button:active {
     flex: 1;
 }
 
-.hero-img {
+.hero-img-static {
     width: 120%;
     height: auto;
     object-fit: contain;
-    /* Start in down position */
-    opacity: 0;
-    transform: translateY(90vh);
-    will-change: transform;
-    /* Smooth ease-out to start immediately and settle gently */
-    animation: heroSlideUp 2.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    /* Static position */
+    opacity: 1;
+    transform: translateY(-30px);
 }
 
 .home-bottom-section {
@@ -1249,7 +1246,7 @@ button:active {
         min-height: 50vh;
     }
 
-    .hero-img {
+    .hero-img-static {
         max-width: 450px;
         /* Larger hero for web */
         animation: none;
@@ -1549,17 +1546,7 @@ button:active {
 }
 
 /* --- Intro Animations Keyframes --- */
-@keyframes heroSlideUp {
-    from {
-        transform: translateY(90vh);
-        opacity: 0;
-    }
 
-    to {
-        transform: translateY(-30px);
-        opacity: 1;
-    }
-}
 
 @keyframes cloudsSlideDown {
     from {
