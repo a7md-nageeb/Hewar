@@ -387,7 +387,7 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
                                     {lang === 'en' ? 'Are you sure you want to end this session?' : 'متأكد إنك عايز تنهي الجولة؟'}
                                 </h3>
                                 <div className="end-session-buttons">
-                                    <button className="btn-3d action-btn action-btn-danger" onClick={onBack}>
+                                    <button className="btn-3d action-btn action-btn-danger" onClick={onHome}>
                                         {lang === 'en' ? 'End Session' : 'انهي الجولة'}
                                     </button>
                                     <button className="btn-3d action-btn action-btn-secondary" onClick={() => setShowExitConfirm(false)}>
