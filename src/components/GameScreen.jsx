@@ -149,7 +149,7 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
     const handleShareGame = async () => {
         const shareData = {
             title: 'Hewar',
-            text: 'Struggling to open a topic? Try this game hewargame.com',
+            text: 'Struggling to open a topic? Try this game',
             url: 'https://hewargame.com'
         };
 
