@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Analytics } from "@vercel/analytics/react"
 import LanguageSelector from './components/LanguageSelector';
 import SelectionScreen from './components/SelectionScreen';
 import GameScreen from './components/GameScreen';
@@ -60,6 +61,7 @@ function App() {
                     onHome={() => setView('language')}
                 />
             )}
+            <Analytics />
         </div>
     );
 }
