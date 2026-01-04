@@ -29,6 +29,9 @@ const QuestionCard = ({ question, lang, onNext }) => {
             return await toJpeg(cardRef.current, {
                 quality: 0.95,
                 backgroundColor: theme.bg,
+                style: {
+                    fontFamily: lang === 'ar' ? 'Rubik, sans-serif' : 'Nunito, sans-serif'
+                },
                 filter: (node) => {
                     // Exclude the share button from the image
                     return !node.classList?.contains('share-btn');
@@ -102,7 +105,7 @@ const QuestionCard = ({ question, lang, onNext }) => {
                     <h2 className="card-question-text" style={{
                         fontSize: lang === 'ar' ? '1.8rem' : '2.2rem',
                         direction: lang === 'ar' ? 'rtl' : 'ltr',
-                        fontFamily: lang === 'ar' ? 'var(--font-ar)' : 'var(--font-en)',
+                        fontFamily: lang === 'ar' ? 'Rubik, sans-serif' : 'Nunito, sans-serif',
                         textAlign: lang === 'ar' ? 'right' : 'left'
                     }}>
                         {lang === 'ar' ? (question.text_ar || question.text_en) : question.text_en}

@@ -149,8 +149,8 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
     const handleShareGame = async () => {
         const shareData = {
             title: 'Hewar',
-            text: 'Check out this game for deep questions!',
-            url: window.location.href
+            text: 'Struggling to open a topic? Try this game hewargame.com',
+            url: 'https://hewargame.com'
         };
 
         if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
