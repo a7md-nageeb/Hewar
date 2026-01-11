@@ -128,6 +128,7 @@ const QuestionCard = ({ question, lang, onNext }) => {
                     onClick={handleShareClick}
                     className="btn-3d share-btn"
                     disabled={isSharing}
+                    stopPropagation={true}
                     style={{
                         right: lang === 'ar' ? 'auto' : '1.5rem',
                         left: lang === 'ar' ? '1.5rem' : 'auto',
