@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { toJpeg } from 'html-to-image';
+import AnimatedButton from './AnimatedButton';
 
 const QuestionCard = ({ question, lang, onNext }) => {
     const cardRef = useRef(null);
@@ -122,7 +123,8 @@ const QuestionCard = ({ question, lang, onNext }) => {
                 </div>
 
                 {/* Share Button (Floating inside card but positioned absolute) */}
-                <button
+                {/* Share Button (Floating inside card but positioned absolute) */}
+                <AnimatedButton
                     onClick={handleShareClick}
                     className="btn-3d share-btn"
                     disabled={isSharing}
@@ -134,7 +136,7 @@ const QuestionCard = ({ question, lang, onNext }) => {
                 >
                     <img src="assets/icons/share.svg" alt="" style={{ width: '20px', height: '20px' }} />
                     <span>{isSharing ? '...' : (lang === 'ar' ? 'مشاركة' : 'Share')}</span>
-                </button>
+                </AnimatedButton>
             </div>
         </>
     );
