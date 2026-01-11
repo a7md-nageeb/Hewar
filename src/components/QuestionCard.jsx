@@ -27,9 +27,20 @@ const QuestionCard = ({ question, lang, onNext }) => {
 
     const generateImage = async () => {
         if (cardRef.current) {
+            // Fetch font CSS manually to ensure it is embedded.
+            // html-to-image often cannot read rules from cross-origin stylesheets (like Google Fonts) automatically.
+            let fontEmbedCSS = '';
+            try {
+                const res = await fetch('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&display=swap');
+                fontEmbedCSS = await res.text();
+            } catch (e) {
+                console.warn('Failed to fetch font CSS for image generation', e);
+            }
+
             return await toJpeg(cardRef.current, {
                 quality: 0.95,
                 backgroundColor: theme.bg,
+                fontEmbedCSS,
                 style: {
                     fontFamily: lang === 'ar' ? 'Rubik, sans-serif' : 'Nunito, sans-serif'
                 },
