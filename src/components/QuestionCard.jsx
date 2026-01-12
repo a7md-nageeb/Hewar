@@ -31,7 +31,7 @@ const QuestionCard = ({ question, lang, onNext }) => {
             // html-to-image often cannot read rules from cross-origin stylesheets (like Google Fonts) automatically.
             let fontEmbedCSS = '';
             try {
-                const res = await fetch('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&display=swap');
+                const res = await fetch('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@400;500;600;700;900&display=swap');
                 fontEmbedCSS = await res.text();
             } catch (e) {
                 console.warn('Failed to fetch font CSS for image generation', e);

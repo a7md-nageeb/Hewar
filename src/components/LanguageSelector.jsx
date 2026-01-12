@@ -42,15 +42,15 @@ const LanguageSelector = ({ lang, onLanguageChange, onStart }) => {
 
                 <div className="home-content-container">
                     <h1 className="app-title-large">
-                        {lang === 'ar' ? 'حوار' : 'Hewar'}
+                        {lang === 'ar' ? 'حـــوار' : 'Hewar'}
                     </h1>
 
                     <div className="subtitle-container">
                         <div className="subtitle-line-blue">
-                            {lang === 'ar' ? 'كلام من القلب' : 'Deep Talks'}
+                            {lang === 'ar' ? 'تواصل حقيقي' : 'Deep Talks'}
                         </div>
                         <div className="subtitle-line-lilac">
-                            {lang === 'ar' ? 'تواصل حقيقي' : 'Real Bonds'}
+                            {lang === 'ar' ? 'كلام عميق' : 'Real Bonds'}
                         </div>
                     </div>
 
