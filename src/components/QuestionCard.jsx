@@ -128,7 +128,7 @@ const QuestionCard = ({ question, lang, onNext }) => {
                 <div className="card-footer">
                     <img src="logo.png" alt="Logo" className="card-footer-logo" />
                     <div className="card-footer-text">
-                        <span style={{ fontWeight: '800', fontSize: '0.9rem' }}>Hewar</span>
+                        <span style={{ fontWeight: lang === 'ar' ? '600' : '800', fontSize: '0.9rem' }}>Hewar</span>
                         <span style={{ fontSize: '0.8rem', opacity: 0.8 }}>Hewargame.com</span>
                     </div>
                 </div>

@@ -50,7 +50,7 @@ const LanguageSelector = ({ lang, onLanguageChange, onStart }) => {
                             {lang === 'ar' ? 'تواصل حقيقي' : 'Deep Talks'}
                         </div>
                         <div className="subtitle-line-lilac">
-                            {lang === 'ar' ? 'كلام عميق' : 'Real Bonds'}
+                            {lang === 'ar' ? 'كلام من القلب' : 'Real Bonds'}
                         </div>
                     </div>
 

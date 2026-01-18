@@ -1185,6 +1185,14 @@ html[dir="rtl"] .subtitle-line-lilac {
     margin-bottom: 1rem;
 }
 
+html[dir="rtl"] .card-question-text {
+    font-weight: 600;
+}
+
+html[dir="rtl"] .card-tag-fallback {
+    font-weight: 600;
+}
+
 .card-footer {
     display: flex;
     align-items: center;
