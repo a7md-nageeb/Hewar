@@ -1050,6 +1050,10 @@ html[dir="rtl"] .subtitle-line-lilac {
     white-space: nowrap;
 }
 
+html[dir="rtl"] .question-counter {
+    font-weight: 600;
+}
+
 .current-num {
     color: var(--ocean-300);
     /* Highlight current */
