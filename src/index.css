@@ -1232,6 +1232,12 @@ html[dir="rtl"] .card-tag-fallback {
     transition: transform 0.1s;
 }
 
+html[dir="rtl"] .share-btn {
+    font-weight: 600;
+}
+
+
+
 .share-btn:active,
 .share-btn.is-pressed {
     transform: scale(0.96);
