@@ -3768,7 +3768,7 @@ export const questions = [
     },
     {
         "id": "q323",
-        "text_en": "Who has the worst music taste in?",
+        "text_en": "Who has the worst music taste?",
         "text_ar": "مين اكتر واحد زوقة وحش في المزيكا؟",
         "category": [
             "Coworkers",
