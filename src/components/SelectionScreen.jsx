@@ -11,7 +11,7 @@ const SelectionScreen = ({ lang, onStart, onBack }) => {
         // 🚫 Not Recommended (Hard Filter)
         const forbidden = {
             'First Time Meeting': ['Uncomfortable', 'Know Me Better', 'Honest'],
-            'Coworkers': ['Uncomfortable', 'Know Me Better', 'Honest'],
+            'Coworkers': ['Uncomfortable', 'Know Me Better'],
             'First Date': ['Know Me Better'],
         };
 
