@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { track } from "@vercel/analytics/react";
 import QuestionCard from './QuestionCard';
 import { questions, categories, genres } from '../data/questions';
 import { saveSession, getRecentHistory, updateUsageCounts, getUsageCounts } from '../utils/sessionManager';
@@ -117,6 +118,7 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
             setDirection(1);
             setCurrentIndex(prev => prev + 1);
         } else {
+            track('Game Completed', { category, genre, questionsPlayed: deck.length });
             setGameOver(true);
         }
     };
