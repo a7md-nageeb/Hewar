@@ -96,6 +96,22 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
         saveSession(ids);
     }, [deck]);
 
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            const isRTL = lang === 'ar';
+            if (e.key === 'ArrowRight') {
+                if (isRTL) handlePrevious();
+                else handleNext();
+            } else if (e.key === 'ArrowLeft') {
+                if (isRTL) handleNext();
+                else handlePrevious();
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [lang, currentIndex, deck.length]); // Dependencies needed for handlers closures
+
     const handleNext = () => {
         if (currentIndex < deck.length - 1) {
             setDirection(1);
