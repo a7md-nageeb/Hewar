@@ -1,4 +1,7 @@
 import AnimatedButton from './AnimatedButton';
+import pkg from '../../package.json';
+
+const { version } = pkg;
 
 const LanguageSelector = ({ lang, onLanguageChange, onStart }) => {
     return (
@@ -54,13 +57,31 @@ const LanguageSelector = ({ lang, onLanguageChange, onStart }) => {
                         </div>
                     </div>
 
-                    <div className="home-cta-wrapper">
+                    <div className="home-cta-wrapper" style={{ position: 'relative' }}>
                         <AnimatedButton
                             onClick={onStart}
                             className="btn-3d lang-btn action-btn-primary cta-btn-large cta-btn-xl"
                         >
                             {lang === 'ar' ? 'يلا بينا' : "Let's Go"}
                         </AnimatedButton>
+
+                        <div style={{
+                            position: 'absolute',
+                            top: '100%',
+                            left: '0',
+                            width: '100%',
+                            marginTop: '0.5rem',
+                            color: 'var(--ocean-200)',
+                            textAlign: 'center',
+                            fontFeatureSettings: "'liga' off, 'clig' off",
+                            fontFamily: 'Nunito',
+                            fontSize: '12px',
+                            fontStyle: 'normal',
+                            fontWeight: 500,
+                            lineHeight: '18px'
+                        }}>
+                            Version {version} · Ahmed Nageeb
+                        </div>
                     </div>
                 </div>
             </div>
