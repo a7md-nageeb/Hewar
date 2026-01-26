@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { track } from "@vercel/analytics/react";
 import QuestionCard from './QuestionCard';
 import { questions, categories, genres } from '../data/questions';
 import { saveSession, getRecentHistory, updateUsageCounts, getUsageCounts } from '../utils/sessionManager';
+import AnimatedButton from './AnimatedButton';
 
 const generateDeck = (category, genre, count = 10) => {
     // 1. Get Usage Counts & History
@@ -95,11 +97,28 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
         saveSession(ids);
     }, [deck]);
 
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            const isRTL = lang === 'ar';
+            if (e.key === 'ArrowRight') {
+                if (isRTL) handlePrevious();
+                else handleNext();
+            } else if (e.key === 'ArrowLeft') {
+                if (isRTL) handleNext();
+                else handlePrevious();
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [lang, currentIndex, deck.length]); // Dependencies needed for handlers closures
+
     const handleNext = () => {
         if (currentIndex < deck.length - 1) {
             setDirection(1);
             setCurrentIndex(prev => prev + 1);
         } else {
+            track('Game Completed', { category, genre, questionsPlayed: deck.length });
             setGameOver(true);
         }
     };
@@ -187,7 +206,7 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
                 {/* Bottom Buttons Container (48px from bottom handled by padding in CSS) */}
                 <div className="session-bottom-container">
                     {/* Share Button (Tertiary) */}
-                    <button onClick={handleShareGame} className="btn-tertiary-share">
+                    <AnimatedButton onClick={handleShareGame} className="btn-tertiary-share">
                         <div
                             className="icon-masked"
                             style={{
@@ -197,11 +216,11 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
                             }}
                         />
                         {lang === 'en' ? 'Share Game with Friends' : 'شارك اللعبة مع صحابك'}
-                    </button>
+                    </AnimatedButton>
 
                     <div className="session-buttons">
-                        <button
-                            onClick={() => setTimeout(handleReplay, 150)}
+                        <AnimatedButton
+                            onClick={handleReplay}
                             className="btn-3d action-btn-primary cta-btn-large"
                             style={{ gap: '12px' }}
                         >
@@ -211,10 +230,10 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
                                 style={{ width: '1.5rem', height: '1.5rem', filter: 'invert(1)' }}
                             />
                             {lang === 'en' ? 'Play Again' : 'العب تاني'}
-                        </button>
+                        </AnimatedButton>
 
-                        <button
-                            onClick={() => setTimeout(onHome, 150)}
+                        <AnimatedButton
+                            onClick={onHome}
                             className="btn-3d action-btn action-btn-secondary"
                             style={{ width: '100%', justifyContent: 'center', gap: '12px' }}
                         >
@@ -229,7 +248,7 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
                                 }}
                             />
                             {lang === 'en' ? 'Back to Home' : 'القائمة الرئيسية'}
-                        </button>
+                        </AnimatedButton>
                     </div>
                 </div>
             </div>
@@ -264,7 +283,7 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
         <div className="game-screen">
             {/* Header: X | Progress | Counter */}
             <div className="game-header">
-                <button
+                <AnimatedButton
                     className="btn-tertiary close-game-btn"
                     onClick={() => setShowExitConfirm(true)}
                 >
@@ -272,7 +291,7 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
                         <path d="M18 6L6 18" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                         <path d="M6 6L18 18" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
-                </button>
+                </AnimatedButton>
 
                 <div className="progress-track">
                     <div
@@ -345,11 +364,11 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
             <div className="game-controls">
                 <ActionButton
                     label={lang === 'en' ? 'Back' : 'اللي فات'}
-                    onClick={() => setTimeout(handlePrevious, 150)}
+                    onClick={handlePrevious}
                 />
                 <ActionButton
                     label={lang === 'en' ? 'Next' : 'التالي'}
-                    onClick={() => setTimeout(handleNext, 150)}
+                    onClick={handleNext}
                     primary
                 />
             </div>
@@ -387,12 +406,12 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
                                     {lang === 'en' ? 'Are you sure you want to end this session?' : 'متأكد إنك عايز تنهي الجولة؟'}
                                 </h3>
                                 <div className="end-session-buttons">
-                                    <button className="btn-3d action-btn action-btn-danger" onClick={onHome}>
+                                    <AnimatedButton className="btn-3d action-btn action-btn-danger" onClick={onHome}>
                                         {lang === 'en' ? 'End Session' : 'انهي الجولة'}
-                                    </button>
-                                    <button className="btn-3d action-btn action-btn-secondary" onClick={() => setShowExitConfirm(false)}>
+                                    </AnimatedButton>
+                                    <AnimatedButton className="btn-3d action-btn action-btn-secondary" onClick={() => setShowExitConfirm(false)}>
                                         {lang === 'en' ? 'Cancel' : 'إلغاء'}
-                                    </button>
+                                    </AnimatedButton>
                                 </div>
                             </div>
                         </motion.div>
@@ -404,7 +423,7 @@ const GameScreen = ({ category, genre, lang, onBack, onReplay, onHome }) => {
 };
 
 const ActionButton = ({ label, onClick, primary, icon, iconRight }) => (
-    <button
+    <AnimatedButton
         onClick={(e) => { e.stopPropagation(); onClick(); }}
         className={`btn-3d action-btn ${primary ? 'action-btn-primary' : 'action-btn-secondary'}`}
         style={{
@@ -413,7 +432,7 @@ const ActionButton = ({ label, onClick, primary, icon, iconRight }) => (
     >
         {icon && <img src={icon} alt="" style={{ width: '24px', height: '24px', filter: primary ? 'invert(1)' : 'none' }} />}
         {label}
-    </button>
+    </AnimatedButton>
 );
 
 export default GameScreen;

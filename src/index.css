@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@400;500;600;700;900&display=swap');
+
 :root {
     /* --- Basic --- */
     --white: #FFFFFF;
@@ -202,7 +204,8 @@ button {
     transition: transform 0.1s;
 }
 
-button:active {
+button:active,
+button.is-pressed {
     transform: scale(0.96);
 }
 
@@ -230,7 +233,8 @@ button:active {
     transition: all 0.1s ease;
 }
 
-.btn-3d:active {
+.btn-3d:active,
+.btn-3d.is-pressed {
     /* Layout */
     display: flex;
     padding: 20px 16px 12px 16px;
@@ -257,7 +261,8 @@ button:active {
     cursor: pointer;
 }
 
-.btn-tertiary:active {
+.btn-tertiary:active,
+.btn-tertiary.is-pressed {
     background: var(--ocean-100);
     transform: scale(0.96);
 }
@@ -334,9 +339,54 @@ button:active {
     z-index: 50;
 }
 
-.lang-pill-btn:active {
+.lang-pill-btn:active,
+.lang-pill-btn.is-pressed {
     background: var(--ocean-50);
     transform: scale(0.96);
+}
+
+/* --- Language Toggle --- */
+.lang-toggle-container {
+    display: inline-flex;
+    /* Padding removed as requested */
+    align-items: center;
+    border-radius: 40px;
+    background: var(--ocean-50);
+    /* Force LTR so English is always left, Arabic always right */
+    direction: ltr;
+    position: relative;
+    z-index: 50;
+}
+
+.lang-toggle-btn {
+    display: flex;
+    padding: 8px 16px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    border-radius: 32px;
+    border: none;
+    background: transparent;
+    /* Default transparent to show container bg */
+    color: var(--ocean-900);
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 80px;
+    /* Ensure click area is decent */
+}
+
+.lang-toggle-btn.selected {
+    background: var(--ocean-300);
+    color: var(--white);
+    /* 3D Shadow */
+    box-shadow: 0 2px 2px 0 rgba(255, 255, 255, 0.40) inset,
+        0 -2px 2px 0 rgba(20, 20, 20, 0.08) inset,
+        0 2px 4px 0 rgba(20, 20, 20, 0.10),
+        0 0 0 4px rgba(245, 245, 247, 0.50);
 }
 
 .lang-content-wrapper {
@@ -429,14 +479,18 @@ button:active {
     color: var(--ocean-900);
     text-align: center;
     font-family: var(--font-en);
-    font-size: 76px;
+    font-size: 5rem;
     font-style: normal;
     font-weight: 900;
-    line-height: 80px;
+    line-height: 5rem;
     font-feature-settings: 'liga' off, 'clig' off;
     margin-top: 0;
     margin-bottom: 24px;
     /* 24px gap to next element */
+}
+
+html[dir="rtl"] .app-title-large {
+    font-weight: 700;
 }
 
 .subtitle-container {
@@ -454,7 +508,7 @@ button:active {
     font-family: var(--font-en);
     font-size: 48px;
     font-style: normal;
-    font-weight: 800;
+    font-weight: 700;
     line-height: 56px;
     letter-spacing: -1px;
     font-feature-settings: 'liga' off, 'clig' off;
@@ -467,10 +521,15 @@ button:active {
     font-family: var(--font-en);
     font-size: 48px;
     font-style: normal;
-    font-weight: 800;
+    font-weight: 700;
     line-height: 56px;
     letter-spacing: -1px;
     font-feature-settings: 'liga' off, 'clig' off;
+}
+
+html[dir="rtl"] .subtitle-line-blue,
+html[dir="rtl"] .subtitle-line-lilac {
+    font-weight: 500;
 }
 
 .home-cta-wrapper {
@@ -494,7 +553,8 @@ button:active {
     line-height: 2rem;
 }
 
-.cta-btn-large:active {
+.cta-btn-large:active,
+.cta-btn-large.is-pressed {
     box-shadow: none;
     transform: translateY(4px);
 }
@@ -795,7 +855,8 @@ button:active {
     color: var(--ocean-300);
 }
 
-.game-back-btn:active {
+.game-back-btn:active,
+.game-back-btn.is-pressed {
     transform: scale(0.9);
     background-color: var(--ocean-100);
     border-radius: 50%;
@@ -908,7 +969,8 @@ button:active {
     transition: transform 0.1s ease;
 }
 
-.btn-tertiary-share:active {
+.btn-tertiary-share:active,
+.btn-tertiary-share.is-pressed {
     transform: scale(0.96);
 }
 
@@ -953,7 +1015,8 @@ button:active {
     padding: 0;
 }
 
-.close-game-btn:active {
+.close-game-btn:active,
+.close-game-btn.is-pressed {
     background: var(--ocean-50);
     transform: scale(0.95);
 }
@@ -985,6 +1048,10 @@ button:active {
     font-feature-settings: 'tnum' on, 'lnum' on;
     /* Tabular numbers if font supports */
     white-space: nowrap;
+}
+
+html[dir="rtl"] .question-counter {
+    font-weight: 600;
 }
 
 .current-num {
@@ -1029,7 +1096,8 @@ button:active {
     transition: transform 0.1s;
 }
 
-.action-btn:active {
+.action-btn:active,
+.action-btn.is-pressed {
     transform: scale(0.96);
 }
 
@@ -1047,7 +1115,8 @@ button:active {
     line-height: 2rem;
 }
 
-.action-btn-primary:active {
+.action-btn-primary:active,
+.action-btn-primary.is-pressed {
     background: var(--ocean-400);
     /* Slightly darker on press */
     /* Ensure padding shift happens via .btn-3d:active */
@@ -1120,6 +1189,14 @@ button:active {
     margin-bottom: 1rem;
 }
 
+html[dir="rtl"] .card-question-text {
+    font-weight: 600;
+}
+
+html[dir="rtl"] .card-tag-fallback {
+    font-weight: 600;
+}
+
 .card-footer {
     display: flex;
     align-items: center;
@@ -1155,7 +1232,14 @@ button:active {
     transition: transform 0.1s;
 }
 
-.share-btn:active {
+html[dir="rtl"] .share-btn {
+    font-weight: 600;
+}
+
+
+
+.share-btn:active,
+.share-btn.is-pressed {
     transform: scale(0.96);
 }
 
@@ -1456,7 +1540,8 @@ button:active {
     justify-content: center;
 }
 
-.action-btn-danger:active {
+.action-btn-danger:active,
+.action-btn-danger.is-pressed {
     background: var(--coral-600);
     /* Slightly darker on press */
 }

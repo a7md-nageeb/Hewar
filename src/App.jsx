@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Analytics } from "@vercel/analytics/react"
+import { track } from "@vercel/analytics/react"
 import LanguageSelector from './components/LanguageSelector';
 import SelectionScreen from './components/SelectionScreen';
 import GameScreen from './components/GameScreen';
@@ -22,10 +23,12 @@ function App() {
     };
 
     const handleStart = () => {
+        track('Start Clicked', { language: lang });
         setView('selection');
     };
 
     const handleStartGame = (category, genre) => {
+        track('Game Started', { category, genre, language: lang });
         setGameConfig({ category, genre });
         setView('game');
     };

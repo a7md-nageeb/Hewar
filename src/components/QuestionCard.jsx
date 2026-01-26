@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { toJpeg } from 'html-to-image';
+import AnimatedButton from './AnimatedButton';
 
 const QuestionCard = ({ question, lang, onNext }) => {
     const cardRef = useRef(null);
@@ -26,9 +27,20 @@ const QuestionCard = ({ question, lang, onNext }) => {
 
     const generateImage = async () => {
         if (cardRef.current) {
+            // Fetch font CSS manually to ensure it is embedded.
+            // html-to-image often cannot read rules from cross-origin stylesheets (like Google Fonts) automatically.
+            let fontEmbedCSS = '';
+            try {
+                const res = await fetch('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@400;500;600;700;900&display=swap');
+                fontEmbedCSS = await res.text();
+            } catch (e) {
+                console.warn('Failed to fetch font CSS for image generation', e);
+            }
+
             return await toJpeg(cardRef.current, {
                 quality: 0.95,
                 backgroundColor: theme.bg,
+                fontEmbedCSS,
                 style: {
                     fontFamily: lang === 'ar' ? 'Rubik, sans-serif' : 'Nunito, sans-serif'
                 },
@@ -116,16 +128,18 @@ const QuestionCard = ({ question, lang, onNext }) => {
                 <div className="card-footer">
                     <img src="logo.png" alt="Logo" className="card-footer-logo" />
                     <div className="card-footer-text">
-                        <span style={{ fontWeight: '800', fontSize: '0.9rem' }}>Hewar</span>
+                        <span style={{ fontWeight: lang === 'ar' ? '600' : '800', fontSize: '0.9rem' }}>Hewar</span>
                         <span style={{ fontSize: '0.8rem', opacity: 0.8 }}>Hewargame.com</span>
                     </div>
                 </div>
 
                 {/* Share Button (Floating inside card but positioned absolute) */}
-                <button
+                {/* Share Button (Floating inside card but positioned absolute) */}
+                <AnimatedButton
                     onClick={handleShareClick}
                     className="btn-3d share-btn"
                     disabled={isSharing}
+                    stopPropagation={true}
                     style={{
                         right: lang === 'ar' ? 'auto' : '1.5rem',
                         left: lang === 'ar' ? '1.5rem' : 'auto',
@@ -134,7 +148,7 @@ const QuestionCard = ({ question, lang, onNext }) => {
                 >
                     <img src="assets/icons/share.svg" alt="" style={{ width: '20px', height: '20px' }} />
                     <span>{isSharing ? '...' : (lang === 'ar' ? 'مشاركة' : 'Share')}</span>
-                </button>
+                </AnimatedButton>
             </div>
         </>
     );
